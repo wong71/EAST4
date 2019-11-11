@@ -907,6 +907,20 @@ GO
     UNION ALL SELECT '119'      ,'信托产品存续标识'                     ,'2'    ,'终止'
 
 
+
+    --500 表分类
+    UNION ALL SELECT '500'   ,'表分类'                  ,'A'      ,'管理信息'
+    UNION ALL SELECT '500'   ,'表分类'                  ,'B'      ,'信托产品公共信息'
+    UNION ALL SELECT '500'   ,'表分类'                  ,'C'      ,'信托产品'
+    UNION ALL SELECT '500'   ,'表分类'                  ,'D'      ,'信托募集'
+    UNION ALL SELECT '500'   ,'表分类'                  ,'E'      ,'信托运用'
+    UNION ALL SELECT '500'   ,'表分类'                  ,'F'      ,'信托运用补充信息'
+    UNION ALL SELECT '500'   ,'表分类'                  ,'G'      ,'信托产品详情'
+    UNION ALL SELECT '500'   ,'表分类'                  ,'H'      ,'信托产品会计'
+    UNION ALL SELECT '500'   ,'表分类'                  ,'I'      ,'固有业务'
+    UNION ALL SELECT '500'   ,'表分类'                  ,'J'      ,'固有会计'
+    UNION ALL SELECT '500'   ,'表分类'                  ,'K'      ,'附件'
+
     --从这里开始为自定义的字典
     --900 数据元类型
     UNION ALL SELECT '900'   ,'数据元类型'               ,'C'        ,'n位字符的固定长度'
@@ -915,17 +929,11 @@ GO
     UNION ALL SELECT '900'   ,'数据元类型'               ,'I'        ,'最多为n位的整数可计算形式'
     UNION ALL SELECT '900'   ,'数据元类型'               ,'D'        ,'十进制小数可计算形式，w表示包含小数点前后字符位在内的整个字段最多字符位数，d表示小数点后的最多字符位数'
     UNION ALL SELECT '900'   ,'数据元类型'               ,'F'        ,'任意长度浮点数'
-    --901 表分类
-    UNION ALL SELECT '901'   ,'表分类'                  ,'A'      ,'管理信息'
-    UNION ALL SELECT '901'   ,'表分类'                  ,'B'      ,'信托产品公共信息'
-    UNION ALL SELECT '901'   ,'表分类'                  ,'C'      ,'信托产品'
-    UNION ALL SELECT '901'   ,'表分类'                  ,'D'      ,'信托募集'
-    UNION ALL SELECT '901'   ,'表分类'                  ,'E'      ,'信托运用'
-    UNION ALL SELECT '901'   ,'表分类'                  ,'F'      ,'信托运用补充信息'
-    UNION ALL SELECT '901'   ,'表分类'                  ,'G'      ,'信托产品详情'
-    UNION ALL SELECT '901'   ,'表分类'                  ,'H'      ,'信托产品会计'
-    UNION ALL SELECT '901'   ,'表分类'                  ,'I'      ,'固有业务'
-    UNION ALL SELECT '901'   ,'表分类'                  ,'J'      ,'固有会计'
-    UNION ALL SELECT '901'   ,'表分类'                  ,'K'      ,'附件'
+
+    --901 数据元类型
+    UNION ALL SELECT '901'   ,'数据元类型'               ,'input'       ,'文本录入'
+    UNION ALL SELECT '901'   ,'数据元类型'               ,'selected'    ,'选择录入'
+
+
 
 
