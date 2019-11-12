@@ -145,7 +145,6 @@ GO
 CREATE TABLE TA02GDXXB
 (   
         ID          INTEGER         NOT NULL    IDENTITY ,
-        XTJGDM      NVARCHAR(3)     NOT NULL             ,   --信托机构代码必填
         XTJGMC      NVARCHAR(200)   NOT NULL             ,   --股东名称必填
         GDLB        NVARCHAR(2)     NOT NULL             ,   --股东类型(004)必填
         GDZJLX      NVARCHAR(2)     NOT NULL             ,   --股东证件类型(005)必填
