@@ -82,8 +82,9 @@ USE EAST4
         --UNION ALL SELECT 68, N'K02', N'附表二固有业务资产负债表'     ,N''                 ,N'K'   ,N'附件'              , N'本表填报信托固有的每月资产负债情况统计表。'
     --```
     --# 3. TEREPORTFIELD
-    TRUNCATE TABLE TEREPORTFIELDVERIFY
+    TRUNCATE TABLE TEREPORTFIELD
     --## 3.1.   N'A01', N'机构信息表'
+    --```sql
     INSERT INTO TEREPORTFIELD(REPORT_ID,FIELD_CODE,FIELD_NAME,DATA_TYPE,DATA_LENGTH,DATA_PRECISION,DATA_METHOD,DATA_REF,VERIFY_FLAG,HINT,MESSAGE)
                   SELECT 1   ,N'XTJGDM'       ,N'信托机构代码'         ,'C'     ,3      ,0      ,'selected'     ,'001'  ,1       ,N'必填'                                    ,''
         UNION ALL SELECT 1   ,N'XTJGMC'       ,N'信托机构名称'         ,'C'     ,200    ,0      ,'input'        ,''     ,1       ,N'必填'                                    ,''
@@ -99,9 +100,10 @@ USE EAST4
         UNION ALL SELECT 1   ,N'SJKZRZJLX'    ,N'实际控制人证件类型'   ,'C'     ,2      ,0      ,'selected'     ,'005'  ,1       ,N'选择性填写若实际控制人标识选是，需填写'  ,''
         UNION ALL SELECT 1   ,N'SJKZRZJHM'    ,N'实际控制人证件号码'   ,'C'     ,60     ,0      ,'input'        ,''     ,1       ,N'选择性填写若实际控制人标识选是，需填写'  ,''
         UNION ALL SELECT 1   ,N'GSZCRQ'       ,N'工商注册日期'         ,'C'     ,8      ,0      ,'input'        ,''     ,1       ,N'必填'                                    ,''
-
+    --```
 
     --## 3.2.   N'A02', N'股东信息表'
+    --```sql
     INSERT INTO TEREPORTFIELD(REPORT_ID,FIELD_CODE,FIELD_NAME,DATA_TYPE,DATA_LENGTH,DATA_PRECISION,DATA_METHOD,DATA_REF,VERIFY_FLAG,HINT,MESSAGE)
                   SELECT 2  ,'XTJGMC'   ,N'股东名称'                ,'C'    ,200    ,0      ,'input'        ,''         ,1      ,N'必填'                                                            ,N''
         UNION ALL SELECT 2  ,'GDLB'     ,N'股东类型'                ,'C'    ,2      ,0      ,'selected'     ,'004'      ,1      ,N'必填'                                                            ,N''
@@ -120,7 +122,7 @@ USE EAST4
         UNION ALL SELECT 2  ,'ZCDQ'     ,N'注册地区'                ,'C'    ,6      ,0      ,'selected'     ,'002'      ,1      ,N'若自然人股东，可不填'                                            ,N''
         UNION ALL SELECT 2  ,'ZCDZ'     ,N'注册地址'                ,'C'    ,200    ,0      ,'input'        ,''         ,1      ,N'若自然人股东，可不填'                                            ,N''
         UNION ALL SELECT 2  ,'SJBGDZ'   ,N'实际办公地址'            ,'C'    ,200    ,0      ,'input'        ,''         ,1      ,N'若自然人股东，可不填'                                            ,N''
-        UNION ALL SELECT 2  ,'SJKZRBS'  ,N'实际控制人标识'          ,'C'    ,1      ,0      ,'selected'     ,'004'      ,1      ,N'若自然人股东，可不填'                                            ,N''
+        UNION ALL SELECT 2  ,'SJKZRBS'  ,N'实际控制人标识'          ,'C'    ,1      ,0      ,'selected'     ,'003'      ,1      ,N'若自然人股东，可不填'                                            ,N''
         UNION ALL SELECT 2  ,'SJKZRLX'  ,N'实际控制人类型'          ,'C'    ,1      ,0      ,'input'        ,''         ,1      ,N'"选择性填写若实际控制人标识选是，需填写"'                        ,N''
         UNION ALL SELECT 2  ,'SJKZRMC'  ,N'实际控制人名称'          ,'C'    ,200    ,0      ,'input'        ,''         ,1      ,N'"选择性填写若实际控制人标识选是，需填写"'                        ,N''
         UNION ALL SELECT 2  ,'SJKZRZJLX',N'实际控制人证件类型'      ,'C'    ,2      ,0      ,'selected'     ,'005'      ,1      ,N'"选择性填写若实际控制人标识选是，需填写"'                        ,N''
@@ -130,9 +132,10 @@ USE EAST4
         UNION ALL SELECT 2  ,'GQZYBL'   ,N'股权质押比例'            ,'D'    ,10     ,4      ,'input'        ,''         ,1      ,N'选择性必填，若“股权是否质押”填报“1-是”，需填写'                  ,N''
         UNION ALL SELECT 2  ,'GQSFDJ'   ,N'股权是否冻结'            ,'C'    ,1      ,0      ,'selected'     ,'003'      ,1      ,N'必填'                                                            ,N''
         UNION ALL SELECT 2  ,'DJBL'     ,N'股权冻结比例'            ,'D'    ,10     ,4      ,'input'        ,''         ,1      ,N'选择性必填，若“股权是否冻结”填报“1-是”，需填写'                  ,N''
+    --```
 
-
-    --## 3.3.   N'A02', N'股东信息表'
+    --## 3.3.   N'A03', N'股东信息表'
+    --```sql
     INSERT INTO TEREPORTFIELD(REPORT_ID,FIELD_CODE,FIELD_NAME,DATA_TYPE,DATA_LENGTH,DATA_PRECISION,DATA_METHOD,DATA_REF,VERIFY_FLAG,HINT,MESSAGE)
                   SELECT 3, 'YGGH'      ,N'员工工号'        ,'C'    ,200    ,0  ,'input'    ,''      ,1     ,'必填'                                                 ,N''
         UNION ALL SELECT 3, 'YGXM'      ,N'员工姓名'        ,'C'    ,200    ,0  ,'input'    ,''      ,1     ,'必填'                                                 ,N''
@@ -150,3 +153,26 @@ USE EAST4
         UNION ALL SELECT 3, 'BGDQ'      ,N'办公地区'        ,'C'    ,6      ,0  ,'selected' ,'002'   ,1     ,'必填'                                                 ,N''
         UNION ALL SELECT 3, 'GWMC'      ,N'岗位名称'        ,'C'    ,30     ,0  ,'input'    ,''      ,1     ,'必填'                                                 ,N''
         UNION ALL SELECT 3, 'GWMS'      ,N'岗位描述'        ,'C'    ,200    ,0  ,'input'    ,''      ,1     ,'必填'                                                 ,N''
+    --```
+
+    --## 3.4.   N'A04', N'关联方'
+    --```sql
+    INSERT INTO TEREPORTFIELD(REPORT_ID,FIELD_CODE,FIELD_NAME,DATA_TYPE,DATA_LENGTH,DATA_PRECISION,DATA_METHOD,DATA_REF,VERIFY_FLAG,HINT,MESSAGE)
+                  SELECT 4,'GLFBH'     ,'关联方编号'           ,'C',   40      ,0      ,'selected'     ,''        ,1      ,'必填'                         ,N''
+        UNION ALL SELECT 4,'GLFLX'     ,'关联方类型'           ,'C',   1       ,0      ,'selected'     ,'004'     ,1      ,'必填'                         ,N''
+        UNION ALL SELECT 4,'GLFMC'     ,'关联方名称'           ,'C',   200     ,0      ,'input'        ,''        ,1      ,'必填'                         ,N''
+        UNION ALL SELECT 4,'GLFZJLX'   ,'关联方证件类型'       ,'C',   2       ,0      ,'selected'     ,'005'     ,1      ,'必填'                         ,N''
+        UNION ALL SELECT 4,'GLFJYFW'   ,'关联方业务或经营范围' ,'C',   200     ,0      ,'input'        ,''        ,1      ,'必填'                         ,N''
+        UNION ALL SELECT 4,'GLFZJHM'   ,'关联方证件号码'       ,'C',   60      ,0      ,'input'        ,''        ,1      ,'必填'                         ,N''
+        UNION ALL SELECT 4,'HYFL'      ,'行业分类'             ,'C',   1       ,0      ,'selected'     ,'009'     ,1      ,'若关联方是自然人，可不填'     ,N''
+        UNION ALL SELECT 4,'HYMX'      ,'行业明细'             ,'C',   6       ,0      ,'selected'     ,'010'     ,1      ,'若关联方是自然人，可不填'     ,N''
+        UNION ALL SELECT 4,'JGXZ'      ,'关联方性质'           ,'C',   1       ,0      ,'selected'     ,'007'     ,1      ,'必填'                         ,N''
+        UNION ALL SELECT 4,'QYZCLB'    ,'企业注册类别'         ,'C',   1       ,0      ,'selected'     ,'008'     ,1      ,'若关联方是自然人，可不填'     ,N''
+        UNION ALL SELECT 4,'GSZCRQ'    ,'工商注册日期'         ,'C',   8       ,0      ,'input'        ,''        ,1      ,'若关联方是自然人，可不填'     ,N''
+        UNION ALL SELECT 4,'ZCZB'      ,'注册资本'             ,'D',   20      ,2,     'input'         ,''        ,1      ,'若关联方是自然人，可不填'     ,N''
+        UNION ALL SELECT 4,'ZCDQ'      ,'注册地区'             ,'C',   6       ,0      ,'selected'     ,'002'     ,1      ,'若关联方是自然人，可不填'     ,N''
+        UNION ALL SELECT 4,'ZCDZ'      ,'注册地址'             ,'C',   200     ,0      ,'input'        ,''        ,1      ,'若关联方是自然人，可不填'     ,N''
+        UNION ALL SELECT 4,'SJBGDZ'    ,'实际办公地址'         ,'C',   200     ,0      ,'input'        ,''        ,1      ,'若自然人股东，可不填'         ,N''
+
+    --```
+GO
