@@ -120,22 +120,23 @@ GO
 CREATE TABLE TA01JGXXB
 (   
         ID                  INTEGER         NOT NULL    IDENTITY,
-        XTJGDM              NVARCHAR(3)     NOT NULL            ,   --信托机构代码(001) 必填
         XTJGMC              NVARCHAR(200)   NOT NULL            ,   --信托机构名称      必填
-        TYSHXYDM            NVARCHAR(40)    NOT NULL            ,   --统一社会信用代码  必填
-        XTGSJYFW            NVARCHAR(2000)  NOT NULL            ,   --信托公司经营范围  必填
-        ZCZB                DECIMAL(20,2)   NOT NULL            ,   --注册资本          必填
-        ZCDQ                NVARCHAR(6)     NOT NULL            ,   --注册地区(002)     必填
-        ZCDZ                NVARCHAR(2000)  NOT NULL            ,   --注册地址          必填
-        FDDBR               NVARCHAR(200)   NOT NULL            ,   --法定代表人        必填
-        SJKZRBS             NVARCHAR(1)     NOT NULL            ,   --实际控制人标识(003)必填
-        SJKZRLX             NVARCHAR(1)     NOT NULL            ,   --实际控制人类型(004)必填
-        SJKZRMC             NVARCHAR(200)                       ,   --实际控制人名称            "选择性填写若实际控制人标识选是，需填写"
-        SJKZRZJLX           NVARCHAR(2)                         ,   --实际控制人证件类型(005)   "选择性填写若实际控制人标识选是，需填写"
-        SJKZRZJHM           NVARCHAR(60)                        ,   --实际控制人证件号码        "选择性填写若实际控制人标识选是，需填写" 自然人实际控制人的身份证件号码为隐私，信托机构变形。
+        XTJGJRXKZDM         NVARCHAR(15)    NOT NULL            ,   --信托机构金融许可证代码(2001) | 填写银保监会颁发的金融许可证编码 | 必填
+        TYSHXYDM            NVARCHAR(40)                        ,   --统一社会信用代码                      必填
+        XTGSJYFW            NVARCHAR(2000)                      ,   --信托公司经营范围                      必填
+        ZCZB                DECIMAL(20,2)                       ,   --注册资本                              必填
+        ZCDQ                NVARCHAR(6)                         ,   --注册地区(1001)                        必填
+        ZCDZ                NVARCHAR(2000)                      ,   --注册地址                              必填
+        SJBGDZ              NVARCHAR(200)                       ,   --实际办公地址                          必填
+        FDDBR               NVARCHAR(200)                       ,   --法定代表人                            必填
+        SJKZRBS             NVARCHAR(1)                         ,   --实际控制人标识(2002)                  必填
+        SJKZRLX             NVARCHAR(1)                         ,   --实际控制人类型(2004)                  必填
+        SJKZRMC             NVARCHAR(200)                       ,   --实际控制人名称                        选择性填写若实际控制人标识选是，需填写"
+        SJKZRZJLX           NVARCHAR(2)                         ,   --实际控制人证件类型(2004)               选择性填写若实际控制人标识选是，需填写"
+        SJKZRZJHM           NVARCHAR(60)                        ,   --实际控制人证件号码                    选择性填写若实际控制人标识选是，需填写" 自然人实际控制人的身份证件号码为隐私，信托机构变形。
+        GSZCRQ              NVARCHAR(8)                         ,   --工商注册日期                          必填
         CONSTRAINT PRI_TA01JGXXB  PRIMARY KEY(ID)
 )
-GO
 
 --2.2.股东信息表
 IF  EXISTS(SELECT 1 FROM sysobjects WHERE NAME = 'TA02GDXXB')
@@ -145,62 +146,69 @@ GO
 CREATE TABLE TA02GDXXB
 (   
         ID          INTEGER         NOT NULL    IDENTITY ,
+        GDLB        NVARCHAR(30)    NOT NULL             ,   --股东类型(004)必填
         XTJGMC      NVARCHAR(200)   NOT NULL             ,   --股东名称必填
-        GDLB        NVARCHAR(2)     NOT NULL             ,   --股东类型(004)必填
-        GDZJLX      NVARCHAR(2)     NOT NULL             ,   --股东证件类型(005)必填
+        GDZJLX      NVARCHAR(40)    NOT NULL             ,   --股东证件类型(005)必填
         GDZJHM      NVARCHAR(60)    NOT NULL             ,   --股东证件号码必填
         FDDBR       NVARCHAR(200)   NOT NULL             ,   --法定代表人必填
         GDJYFW      NVARCHAR(2000)  NOT NULL             ,   --股东业务或经营范围必填
-        KGFS        NVARCHAR(1)     NOT NULL             ,   --控股方式(006)必填
+        KGFS        NVARCHAR(20)    NOT NULL             ,   --控股方式(006)必填
         CGBL        DECIMAL(10,4)   NOT NULL    DEFAULT 0,   --持股比例必填
-        GGXZ        NVARCHAR(1)                          ,   --机构性质(007)     若自然人股东，可不填
-        QYZCLB      NVARCHAR(2)                          ,   --企业注册类别(008) 择性必填，除自然人/个体工商户/广义政府/特定目的载体外，需填写
-        HYFL        NVARCHAR(1)                          ,   --行业分类(009)若自然人股东，可不填
-        HYMX        NVARCHAR(6)                          ,   --行业明细(010)若自然人股东，可不填
+        GGXZ        NVARCHAR(60)                         ,   --机构性质(007)     若自然人股东，可不填
+        QYZCLB      NVARCHAR(30)                         ,   --企业注册类别(008) 择性必填，除自然人/个体工商户/广义政府/特定目的载体外，需填写
+        HYFL        NVARCHAR(20)                         ,   --行业分类(009)若自然人股东，可不填
+        HYMX        NVARCHAR(12)                         ,   --行业明细(010)若自然人股东，可不填
         GSZCRQ      NVARCHAR(8)                          ,   --工商注册日期若自然人股东，可不填
         ZCZB        DECIMAL(20,2)                        ,   --注册资本  若自然人股东，可不填
-        ZCDQ        NVARCHAR(6)                          ,   --注册地区(002)若自然人股东，可不填
+        ZCDQ        NVARCHAR(12)                         ,   --注册地区(002)若自然人股东，可不填
         ZCDZ        NVARCHAR(200)                        ,   --注册地址若自然人股东，可不填
         SJBGDZ      NVARCHAR(200)                        ,   --实际办公地址若自然人股东，可不填
-        SJKZRBS     NVARCHAR(1)                          ,   --实际控制人标识（003）若自然人股东，可不填
-        SJKZRLX     NVARCHAR(1)                          ,   --实际控制人类型（004）"选择性填写若实际控制人标识选是，需填写"
+        SJKZRBS     NVARCHAR(3)                          ,   --实际控制人标识（003）若自然人股东，可不填
+        SJKZRLX     NVARCHAR(30)                         ,   --实际控制人类型（004）"选择性填写若实际控制人标识选是，需填写"
         SJKZRMC     NVARCHAR(200)                        ,   --实际控制人名称"选择性填写若实际控制人标识选是，需填写"
-        SJKZRZJLX   NVARCHAR(2)                          ,   --实际控制人证件类型（005）"选择性填写若实际控制人标识选是，需填写"
+        SJKZRZJLX   NVARCHAR(40)                         ,   --实际控制人证件类型（005）"选择性填写若实际控制人标识选是，需填写"
         SJKZRZJHM   NVARCHAR(60)                         ,   --实际控制人证件号码"选择性填写若实际控制人标识选是，需填写"
-        GDZT        NVARCHAR(1)    NOT NULL              ,   --股东状态(011)必填
-        GQSFZY      NVARCHAR(1)     NOT NULL             ,   --股权是否质押(003)必填
-        GQZYBL      DECIMAL(10,4)                        ,   --股权质押比例选择性必填，若“股权是否质押”填报“1-是”，需填写
-        GQSFDJ      NVARCHAR(1)                          ,   --股权是否冻结(003)必填
-        DJBL        DECIMAL(10,4)                        ,   --股权冻结比例选择性必填，若“股权是否冻结”填报“1-是”，需填写
+        GDZT        NVARCHAR(10)                         ,   --股东状态(2009)必填
+        YZXDRBS     NVARCHAR(3)                          ,   --一致行动人标识(2002)
+        YZXDRZB     NVARCHAR(8)                          ,   --一致行动人组别
+        GQSFZY      NVARCHAR(3)                          ,   --股权是否质押(2002)       必填
+        GQZYBL      DECIMAL(10,4)                        ,   --股权质押比例             选择性必填，若“股权是否质押”填报“1-是”，需填写
+        GQSFDJ      NVARCHAR(3)                          ,   --股权是否冻结(2002)       必填
+        DJBL        DECIMAL(10,4)                        ,   --股权冻结比例             选择性必填，若“股权是否冻结”填报“1-是”，需填写
         CONSTRAINT PRI_TA02GDXXB  PRIMARY KEY(ID)
 )
+GO
+CREATE UNIQUE INDEX IDX_TA02GDXXB_1 ON TA02GDXXB(XTJGMC,GDZJLX,GDZJHM)
 GO
 --2.3.员工信息表
 IF  EXISTS(SELECT 1 FROM sysobjects WHERE NAME = 'TA03YGXXB')
     DROP TABLE TA03YGXXB
 GO
-
 CREATE TABLE TA03YGXXB
 (   
         ID          INTEGER         NOT NULL    IDENTITY,
-        YGGH        NVARCHAR(200)   NOT NULL            ,    --员工号必填
-        YGXM        NVARCHAR(200)   NOT NULL            ,    --员工姓名必填
-        YGZJLX      NVARCHAR(2)     NOT NULL            ,    --员工证件类型(012)必填
-        YGJZHM      NVARCHAR(60)    NOT NULL            ,    --员工证件号码必填员工证件号码为隐私，信托机构变形。
-        LXDH        NVARCHAR(30)                        ,    --联系电话非必填员工的电话号码为隐私，暂不取
-        SSBM        NVARCHAR(200)   NOT NULL            ,    --所属部门必填
-        BMFL        NVARCHAR(30)    NOT NULL            ,    --所属部门分类必填
-        YGZW        NVARCHAR(200)   NOT NULL            ,    --员工职务必填
-        SFGG        NVARCHAR(1)     NOT NULL            ,    --是否高管(003)必填
-        YGBZ        NVARCHAR(1)     NOT NULL            ,    --员工编制(014)必填
-        YGZT        NVARCHAR(1)     NOT NULL            ,    --员工状态*015)必填
-        RZRQ        NVARCHAR(8)                         ,    --入职日期"条件下必填若员工状态为在职、停职、退休时，必填"
-        LZRQ        NVARCHAR(8)                         ,    --离职日期"条件下必填若员工状态为离职、时，必填"
-        BGDQ        NVARCHAR(6)     NOT NULL            ,    --办公地区(002)必填
-        GWMC        NVARCHAR(30)    NOT NULL            ,    --岗位名称必填
-        GWMS        NVARCHAR(200)   NOT NULL            ,    --岗位描述必填
+        YGH         NVARCHAR(200)   NOT NULL            ,    --员工号               必填
+        YGXM        NVARCHAR(200)   NOT NULL            ,    --员工姓名             必填
+        YGZJLX      NVARCHAR(30)    NOT NULL            ,    --员工证件类型(2010)   必填
+        YGJZHM      NVARCHAR(60)    NOT NULL            ,    --员工证件号码         必填员工证件号码为隐私，信托机构变形。
+        ZZMM        NVARCHAR(20)    NOT NULL            ,    --政治面貌(2011)       必填
+        LXDH        NVARCHAR(30)                        ,    --联系电话             非必填员工的电话号码为隐私，暂不取
+        SSBM        NVARCHAR(200)   NOT NULL            ,    --所属部门             必填
+        SSBMFL      NVARCHAR(100)   NOT NULL            ,    --所属部门分类(2012)   必填
+        YGZW        NVARCHAR(200)   NOT NULL            ,    --员工职务             必填
+        SFGG        NVARCHAR(3)     NOT NULL            ,    --是否高管(2002)       必填
+        YGBZ        NVARCHAR(20)    NOT NULL            ,    --员工编制(2013)       必填
+        YGZT        NVARCHAR(20)    NOT NULL            ,    --员工状态(2014)       必填
+        RZRQ        NVARCHAR(8)                         ,    --入职日期             条件性必填,若员工状态为在职、停职、退休时，必填
+        LZRQ        NVARCHAR(8)                         ,    --离职日期             条件性必填,若员工状态为离职时，必填
+        BGDQ        NVARCHAR(12)    NOT NULL            ,    --办公地区(1001)       必填
+        GWMC        NVARCHAR(30)    NOT NULL            ,    --岗位名称             必填
+        GWMS        NVARCHAR(200)   NOT NULL            ,    --岗位描述             必填
         CONSTRAINT PRI_TA03YGXXB  PRIMARY KEY(ID)
 )
+GO
+CREATE UNIQUE INDEX IDX_TA03YGXXB_1 ON TA03YGXXB(YGH)
+CREATE UNIQUE INDEX IDX_TA03YGXXB_2 ON TA03YGXXB(YGXM,YGZJLX,YGJZHM)
 GO
 
 --2.4.关联方信息表
@@ -211,21 +219,23 @@ GO
 CREATE TABLE TA04GLFXXB
 (   
         ID          INTEGER         NOT NULL    IDENTITY,
-        GLFBH       NVARCHAR(40)    NOT NULL            ,--  关联方编号 必填  
-        GLFLX       NVARCHAR(1)     NOT NULL            ,--  关联方类型(004)  必填 
-        GLFMC       NVARCHAR(200)   NOT NULL            ,-- 关联方名称  必填 
-        GLFZJLX     NVARCHAR(2)     NOT NULL            ,-- 关联方证件类型 (005) 必填 
-        GLFJYFW     NVARCHAR(200)   NOT NULL            ,-- 关联方业务或经营范围  必填 
+        GLFBH       NVARCHAR(40)    NOT NULL            ,--  关联方编号             必填  
+        GLFLX       NVARCHAR(30)    NOT NULL            ,--  关联方类型(2003)       必填 
+        GLLX        NVARCHAR(500)                       ,-- 关联类型(2015)          必填
+        GLFMC       NVARCHAR(200)   NOT NULL            ,-- 关联方名称              必填 
+        GLFZJLX     NVARCHAR(40)    NOT NULL            ,-- 关联方证件类型 (2004)   必填 
         GLFZJHM     NVARCHAR(60)    NOT NULL            ,-- 关联方证件号码  必填 自然人关联方的身份证件号码为隐私，信托机构变形。
-        HYFL        NVARCHAR(1)                         ,-- 行业分类 (009) 若关联方是自然人，可不填 
-        HYMX        NVARCHAR(6)                         ,-- 行业明细 (010) 若关联方是自然人，可不填 
-        JGXZ        NVARCHAR(1)     NOT NULL            ,-- 关联方性质 (007) 必填 
-        QYZCLB      NVARCHAR(1)                         ,-- 企业注册类别 (008) 若关联方是自然人，可不填 
-        GSZCRQ      NVARCHAR(8)                         ,-- 工商注册日期  若关联方是自然人，可不填 
-        ZCZB        DECIMAL(20,2)                       ,-- 注册资本  若关联方是自然人，可不填 
-        ZCDQ        NVARCHAR(6)                         ,-- 注册地区 (002) 若关联方是自然人，可不填 
-        ZCDZ        NVARCHAR(200)                       ,-- 注册地址  若关联方是自然人，可不填 
-        SJBGDZ      NVARCHAR(200)                       ,-- 实际办公地址  若自然人股东，可不填 
+        GLFJYFW     NVARCHAR(200)   NOT NULL            ,-- 关联方业务或经营范围    必填 
+        HYFL        NVARCHAR(20)                        ,-- 行业分类 (2008)     条件性必填,若关联方是自然人，非必填
+        HYMX        NVARCHAR(6)                         ,-- 行业明细 (1002)     条件性必填,若关联方是自然人，非必填
+        QYZCLB      NVARCHAR(30)                        ,-- 企业注册类别 (2007) 条件性必填，若关联方类型选择非金融企业、金融机构（实体）、境外的，需填写 
+        GSZCRQ      NVARCHAR(8)                         ,-- 工商注册日期        条件性必填,若关联方是自然人，非必填
+        ZCZB        DECIMAL(20,2)                       ,-- 注册资本            条件性必填,若关联方是自然人，非必填
+        ZCDQ        NVARCHAR(12)                        ,-- 注册地区 (1001)     条件性必填,若关联方是自然人，非必填
+        ZCDZ        NVARCHAR(200)                       ,-- 注册地址            条件性必填,若关联方是自然人，非必填
+        SJBGDZ      NVARCHAR(200)                       ,-- 实际办公地址        条件性必填,若关联方是自然人，非必填
         CONSTRAINT PRI_TA04GLFXXB  PRIMARY KEY(ID)
 )
+GO
+CREATE UNIQUE INDEX IDX_TA04GLFXXB_1 ON TA04GLFXXB(GLFBH)
 GO
