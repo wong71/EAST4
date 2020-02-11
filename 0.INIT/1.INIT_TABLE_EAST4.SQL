@@ -125,14 +125,14 @@ CREATE TABLE TA01JGXXB
         TYSHXYDM            NVARCHAR(40)                        ,   --统一社会信用代码                      必填
         XTGSJYFW            NVARCHAR(2000)                      ,   --信托公司经营范围                      必填
         ZCZB                DECIMAL(20,2)                       ,   --注册资本                              必填
-        ZCDQ                NVARCHAR(6)                         ,   --注册地区(1001)                        必填
-        ZCDZ                NVARCHAR(2000)                      ,   --注册地址                              必填
+        ZCDQ                NVARCHAR(12)                        ,   --注册地区(1001)                        必填
+        ZCDZ                NVARCHAR(200)                       ,   --注册地址                              必填
         SJBGDZ              NVARCHAR(200)                       ,   --实际办公地址                          必填
         FDDBR               NVARCHAR(200)                       ,   --法定代表人                            必填
-        SJKZRBS             NVARCHAR(1)                         ,   --实际控制人标识(2002)                  必填
-        SJKZRLX             NVARCHAR(1)                         ,   --实际控制人类型(2004)                  必填
+        SJKZRBS             NVARCHAR(3)                         ,   --实际控制人标识(2002)                  必填
+        SJKZRLX             NVARCHAR(30)                        ,   --实际控制人类型(2004)                  必填
         SJKZRMC             NVARCHAR(200)                       ,   --实际控制人名称                        选择性填写若实际控制人标识选是，需填写"
-        SJKZRZJLX           NVARCHAR(2)                         ,   --实际控制人证件类型(2004)               选择性填写若实际控制人标识选是，需填写"
+        SJKZRZJLX           NVARCHAR(40)                         ,   --实际控制人证件类型(2004)               选择性填写若实际控制人标识选是，需填写"
         SJKZRZJHM           NVARCHAR(60)                        ,   --实际控制人证件号码                    选择性填写若实际控制人标识选是，需填写" 自然人实际控制人的身份证件号码为隐私，信托机构变形。
         GSZCRQ              NVARCHAR(8)                         ,   --工商注册日期                          必填
         CONSTRAINT PRI_TA01JGXXB  PRIMARY KEY(ID)
