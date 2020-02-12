@@ -150,9 +150,9 @@ CREATE TABLE TA02GDXXB
         XTJGMC      NVARCHAR(200)   NOT NULL             ,   --股东名称必填
         GDZJLX      NVARCHAR(40)    NOT NULL             ,   --股东证件类型(005)必填
         GDZJHM      NVARCHAR(60)    NOT NULL             ,   --股东证件号码必填
-        FDDBR       NVARCHAR(200)   NOT NULL             ,   --法定代表人必填
-        GDJYFW      NVARCHAR(2000)  NOT NULL             ,   --股东业务或经营范围必填
-        KGFS        NVARCHAR(20)    NOT NULL             ,   --控股方式(006)必填
+        FDDBR       NVARCHAR(200)                        ,   --法定代表人必填
+        GDJYFW      NVARCHAR(2000)                       ,   --股东业务或经营范围必填
+        KGFS        NVARCHAR(20)                         ,   --控股方式(006)必填
         CGBL        DECIMAL(10,4)   NOT NULL    DEFAULT 0,   --持股比例必填
         GGXZ        NVARCHAR(60)                         ,   --机构性质(007)     若自然人股东，可不填
         QYZCLB      NVARCHAR(30)                         ,   --企业注册类别(008) 择性必填，除自然人/个体工商户/广义政府/特定目的载体外，需填写
@@ -191,19 +191,19 @@ CREATE TABLE TA03YGXXB
         YGXM        NVARCHAR(200)   NOT NULL            ,    --员工姓名             必填
         YGZJLX      NVARCHAR(30)    NOT NULL            ,    --员工证件类型(2010)   必填
         YGJZHM      NVARCHAR(60)    NOT NULL            ,    --员工证件号码         必填员工证件号码为隐私，信托机构变形。
-        ZZMM        NVARCHAR(20)    NOT NULL            ,    --政治面貌(2011)       必填
+        ZZMM        NVARCHAR(20)                        ,    --政治面貌(2011)       必填
         LXDH        NVARCHAR(30)                        ,    --联系电话             非必填员工的电话号码为隐私，暂不取
-        SSBM        NVARCHAR(200)   NOT NULL            ,    --所属部门             必填
-        SSBMFL      NVARCHAR(100)   NOT NULL            ,    --所属部门分类(2012)   必填
-        YGZW        NVARCHAR(200)   NOT NULL            ,    --员工职务             必填
-        SFGG        NVARCHAR(3)     NOT NULL            ,    --是否高管(2002)       必填
-        YGBZ        NVARCHAR(20)    NOT NULL            ,    --员工编制(2013)       必填
-        YGZT        NVARCHAR(20)    NOT NULL            ,    --员工状态(2014)       必填
+        SSBM        NVARCHAR(200)                       ,    --所属部门             必填
+        SSBMFL      NVARCHAR(100)                       ,    --所属部门分类(2012)   必填
+        YGZW        NVARCHAR(200)                       ,    --员工职务             必填
+        SFGG        NVARCHAR(3)                         ,    --是否高管(2002)       必填
+        YGBZ        NVARCHAR(20)                        ,    --员工编制(2013)       必填
+        YGZT        NVARCHAR(20)                        ,    --员工状态(2014)       必填
         RZRQ        NVARCHAR(8)                         ,    --入职日期             条件性必填,若员工状态为在职、停职、退休时，必填
         LZRQ        NVARCHAR(8)                         ,    --离职日期             条件性必填,若员工状态为离职时，必填
-        BGDQ        NVARCHAR(12)    NOT NULL            ,    --办公地区(1001)       必填
-        GWMC        NVARCHAR(30)    NOT NULL            ,    --岗位名称             必填
-        GWMS        NVARCHAR(200)   NOT NULL            ,    --岗位描述             必填
+        BGDQ        NVARCHAR(12)                        ,    --办公地区(1001)       必填
+        GWMC        NVARCHAR(30)                        ,    --岗位名称             必填
+        GWMS        NVARCHAR(200)                       ,    --岗位描述             必填
         CONSTRAINT PRI_TA03YGXXB  PRIMARY KEY(ID)
 )
 GO
@@ -219,13 +219,13 @@ GO
 CREATE TABLE TA04GLFXXB
 (   
         ID          INTEGER         NOT NULL    IDENTITY,
-        GLFBH       NVARCHAR(40)    NOT NULL            ,--  关联方编号             必填  
-        GLFLX       NVARCHAR(30)    NOT NULL            ,--  关联方类型(2003)       必填 
+        GLFBH       NVARCHAR(40)    NOT NULL            ,-- 关联方编号             必填  
+        GLFLX       NVARCHAR(30)                        ,-- 关联方类型(2003)       必填 
         GLLX        NVARCHAR(500)                       ,-- 关联类型(2015)          必填
         GLFMC       NVARCHAR(200)   NOT NULL            ,-- 关联方名称              必填 
         GLFZJLX     NVARCHAR(40)    NOT NULL            ,-- 关联方证件类型 (2004)   必填 
         GLFZJHM     NVARCHAR(60)    NOT NULL            ,-- 关联方证件号码  必填 自然人关联方的身份证件号码为隐私，信托机构变形。
-        GLFJYFW     NVARCHAR(200)   NOT NULL            ,-- 关联方业务或经营范围    必填 
+        GLFJYFW     NVARCHAR(200)                       ,-- 关联方业务或经营范围    必填 
         HYFL        NVARCHAR(20)                        ,-- 行业分类 (2008)     条件性必填,若关联方是自然人，非必填
         HYMX        NVARCHAR(6)                         ,-- 行业明细 (1002)     条件性必填,若关联方是自然人，非必填
         QYZCLB      NVARCHAR(30)                        ,-- 企业注册类别 (2007) 条件性必填，若关联方类型选择非金融企业、金融机构（实体）、境外的，需填写 
@@ -238,4 +238,5 @@ CREATE TABLE TA04GLFXXB
 )
 GO
 CREATE UNIQUE INDEX IDX_TA04GLFXXB_1 ON TA04GLFXXB(GLFBH)
+CREATE        INDEX IDX_TA04GLFXXB_2 ON TA04GLFXXB(GLFBH,GLFMC,GLFZJLX,GLFZJHM)
 GO
