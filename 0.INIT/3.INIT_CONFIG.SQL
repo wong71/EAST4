@@ -116,7 +116,7 @@ USE EAST4
     --## 3.2.   N'A02', N'股东信息表'
     --```sql
     INSERT INTO TEREPORTFIELD(REPORT_ID,FIELD_CODE,FIELD_NAME,DATA_TYPE,DATA_LENGTH,DATA_PRECISION,DATA_METHOD,DATA_REF,VERIFY_FLAG,HINT,MESSAGE)
-                  SELECT 2  ,'GDLB'     ,N'股东类型'                ,'C'    ,30     ,0      ,'selected'     ,'2003'     ,1      ,N'必填'                                                                ,N'填写枚举值:自然人/个体工商户/广义政府/非金融企业/金融机构（实体）/特定目的载体/境外 '
+                  SELECT 2  ,'GDLX'     ,N'股东类型'                ,'C'    ,30     ,0      ,'selected'     ,'2003'     ,1      ,N'必填'                                                                ,N'填写枚举值:自然人/个体工商户/广义政府/非金融企业/金融机构（实体）/特定目的载体/境外 '
         UNION ALL SELECT 2  ,'XTJGMC'   ,N'股东名称'                ,'C'    ,200    ,0      ,'input'        ,''         ,1      ,N'必填'                                                                ,N''
         UNION ALL SELECT 2  ,'GDZJLX'   ,N'股东证件类型'            ,'C'    ,40     ,0      ,'selected'     ,'2004'     ,1      ,N'条件性必填,股东类型选择广义政府的，非必填'                           ,N'填写枚举值。对自然人股东，优先填报股东身份证件号码，对金融机构股东，优先填报股东金融许可证号，对于非金融机构或其他则填报社会信用代码'
         UNION ALL SELECT 2  ,'GDZJHM'   ,N'股东证件号码'            ,'C'    ,60     ,0      ,'input'        ,''         ,1      ,N'条件性必填,股东类型选择广义政府的，非必填'                           ,N'填写证件号码,自然人股东的身份证件号码为隐私，进行变形'

@@ -146,7 +146,7 @@ GO
 CREATE TABLE TA02GDXXB
 (   
         ID          INTEGER         NOT NULL    IDENTITY ,
-        GDLB        NVARCHAR(30)    NOT NULL             ,   --股东类型(004)必填
+        GDLX        NVARCHAR(30)    NOT NULL             ,   --股东类型(004)必填
         XTJGMC      NVARCHAR(200)   NOT NULL             ,   --股东名称必填
         GDZJLX      NVARCHAR(40)    NOT NULL             ,   --股东证件类型(005)必填
         GDZJHM      NVARCHAR(60)    NOT NULL             ,   --股东证件号码必填
