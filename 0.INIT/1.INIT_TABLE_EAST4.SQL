@@ -148,8 +148,8 @@ CREATE TABLE TA02GDXXB
         ID          INTEGER         NOT NULL    IDENTITY ,
         GDLX        NVARCHAR(30)    NOT NULL             ,   --股东类型(004)必填
         XTJGMC      NVARCHAR(200)   NOT NULL             ,   --股东名称必填
-        GDZJLX      NVARCHAR(40)    NOT NULL             ,   --股东证件类型(005)必填
-        GDZJHM      NVARCHAR(60)    NOT NULL             ,   --股东证件号码必填
+        GDZJLX      NVARCHAR(40)                         ,   --股东证件类型(005)必填
+        GDZJHM      NVARCHAR(60)                         ,   --股东证件号码必填
         FDDBR       NVARCHAR(200)                        ,   --法定代表人必填
         GDJYFW      NVARCHAR(2000)                       ,   --股东业务或经营范围必填
         KGFS        NVARCHAR(20)                         ,   --控股方式(006)必填
