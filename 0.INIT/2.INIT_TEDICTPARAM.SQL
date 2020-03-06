@@ -80,7 +80,7 @@ GO
         UNION ALL SELECT '2003',    '主体类型'                              ,   '4'                 ,   '非金融企业'
         UNION ALL SELECT '2003',    '主体类型'                              ,   '5'                 ,   '金融机构（实体）'
         UNION ALL SELECT '2003',    '主体类型'                              ,   '6'                 ,   '特定目的载体'
-        UNION ALL SELECT '2003',    '主体类型'                              ,   '7'                 ,   '境外 '
+        UNION ALL SELECT '2003',    '主体类型'                              ,   '7'                 ,   '境外'
         UNION ALL SELECT '2004',    '证件类型(个人+机构+社团)'              ,   '10'                ,   '居民身份证'
         UNION ALL SELECT '2004',    '证件类型(个人+机构+社团)'              ,   '11'                ,   '临时居民身份证'
         UNION ALL SELECT '2004',    '证件类型(个人+机构+社团)'              ,   '12'                ,   '户口薄'
@@ -862,6 +862,7 @@ GO
         UNION ALL SELECT '9001',    '数据元类型'                            ,'D'                    ,   '十进制小数可计算形式，w表示包含小数点前后字符位在内的整个字段最多字符位数，d表示小数点后的最多字符位数'
         UNION ALL SELECT '9001',    '数据元类型'                            ,'F'                    ,   '任意长度浮点数'
         UNION ALL SELECT '9002',    '数据元类型'                            ,'input'                ,   '文本录入'
-        UNION ALL SELECT '9002',    '数据元类型'                            ,'selected'             ,   '选择录入'
+        UNION ALL SELECT '9002',    '数据元类型'                            ,'selected'             ,   '单选择录入'
+        UNION ALL SELECT '9002',    '数据元类型'                            ,'multiselected'        ,   '多选择录入'
 
 GO
