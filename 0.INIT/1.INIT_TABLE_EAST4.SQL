@@ -66,7 +66,7 @@ CREATE TABLE TEREPORT
         FILE_NAME           NVARCHAR(100)       NOT NULL,               --传输文件名
         CATALOG_TYPE        NVARCHAR(100)       NOT NULL,               --分类
         CATALOG_TYPE_NAME   NVARCHAR(100)       NOT NULL,               --分类说明
-        DATASOURCE          NVARCHAR(128)               ,               --数据源系统名称
+        DATA_SOURCE         NVARCHAR(128)               ,               --数据源系统名称
         TABLE_NAME          NVARCHAR(128)               ,               --数据源表
         SUMMARY             NVARCHAR(512),                              --数据源说明
         CONSTRAINT PRI_TEREPORT PRIMARY KEY(REPORT_ID)
