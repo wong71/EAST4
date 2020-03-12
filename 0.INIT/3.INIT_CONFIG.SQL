@@ -127,14 +127,14 @@ USE EAST4
     --```sql
     INSERT INTO TEREPORTFIELD(REPORT_ID,FIELD_CODE,FIELD_NAME,DATA_TYPE,DATA_LENGTH,DATA_PRECISION,DATA_METHOD,DATA_REF,VERIFY_FLAG,HINT,MESSAGE)
                   SELECT 2  ,'GDLX'     ,N'股东类型'                ,'C'    ,30     ,0      ,'selected'     ,'2003'     ,1      ,N'必填'                                                                ,N'填写枚举值:自然人/个体工商户/广义政府/非金融企业/金融机构（实体）/特定目的载体/境外 '
-        UNION ALL SELECT 2  ,'XTJGMC'   ,N'股东名称'                ,'C'    ,200    ,0      ,'input'        ,''         ,1      ,N'必填'                                                                ,N''
+        UNION ALL SELECT 2  ,'GDMC'     ,N'股东名称'                ,'C'    ,200    ,0      ,'input'        ,''         ,1      ,N'必填'                                                                ,N''
         UNION ALL SELECT 2  ,'GDZJLX'   ,N'股东证件类型'            ,'C'    ,40     ,0      ,'selected'     ,'2004'     ,2      ,N'条件性必填,股东类型选择广义政府的，非必填'                           ,N'填写枚举值。对自然人股东，优先填报股东身份证件号码，对金融机构股东，优先填报股东金融许可证号，对于非金融机构或其他则填报社会信用代码'
         UNION ALL SELECT 2  ,'GDZJHM'   ,N'股东证件号码'            ,'C'    ,60     ,0      ,'input'        ,''         ,2      ,N'条件性必填,股东类型选择广义政府的，非必填'                           ,N'填写证件号码,自然人股东的身份证件号码为隐私，进行变形'
         UNION ALL SELECT 2  ,'FDDBR'    ,N'法定代表人'              ,'C'    ,200    ,0      ,'input'        ,''         ,2      ,N'条件性必填,股东类型选择广义政府的，非必填'                           ,N'填写法定代表人姓名,填写法定代表人姓名，应与工商注册的姓名一致'
         UNION ALL SELECT 2  ,'GDJYFW'   ,N'股东业务或经营范围'      ,'C'    ,2000   ,0      ,'input'        ,''         ,2      ,N'条件性必填,股东类型选择广义政府的，非必填'                           ,N'填写信托公司股东的业务或经营范围,填写经营范围，应与工商注册中的经营范围一致。'
         UNION ALL SELECT 2  ,'KGFS'     ,N'控股方式'                ,'C'    ,20     ,0      ,'selected'     ,'2005'     ,1      ,N'必填'                                                                ,N''
         UNION ALL SELECT 2  ,'CGBL'     ,N'持股比例'                ,'D'    ,10     ,4      ,'input'        ,''         ,1      ,N'必填'                                                                ,N''
-        UNION ALL SELECT 2  ,'GGXZ'     ,N'机构性质'                ,'C'    ,60     ,0      ,'selected'     ,'2006'     ,2      ,N'条件性必填,自然人股东非必填'                                         ,N'填写枚举值。企业法人(公司、非公司制企业法人)/企业非法人(个人独资企业、合伙企业)/行政机关/事业单位/社会团体/其他'
+        UNION ALL SELECT 2  ,'JGXZ'     ,N'机构性质'                ,'C'    ,60     ,0      ,'selected'     ,'2006'     ,2      ,N'条件性必填,自然人股东非必填'                                         ,N'填写枚举值。企业法人(公司、非公司制企业法人)/企业非法人(个人独资企业、合伙企业)/行政机关/事业单位/社会团体/其他'
         UNION ALL SELECT 2  ,'QYZCLB'   ,N'企业注册类别'            ,'C'    ,30     ,0      ,'selected'     ,'2007'     ,2      ,N'条件性必填，股东类型选择非金融企业、金融机构（实体）、境外的，需填写',N'填写枚举值。有限责任公司/股份有限公司/分公司/非公司企业法人/营业单位/企业非法人分支机构/个人独资企业/合伙企业/中外合作企业/中外合资企业/外资企业'
         UNION ALL SELECT 2  ,'HYFL'     ,N'行业分类'                ,'C'    ,20     ,0      ,'selected'     ,'2008'     ,2      ,N'条件性必填自然人、广义政府股东非必填'                                ,N'填写枚举值填写信托公司股东的行业分类:基础产业/房地产/证券/金融机构/工商企业/其他'
         UNION ALL SELECT 2  ,'HYMX'     ,N'行业明细'                ,'C'    ,12     ,0      ,'selected'     ,'1002'     ,2      ,N'条件性必填自然人、广义政府股东非必填'                                ,N'填写机构所属行业明细代码,行业分类按《国民经济行业分类》（GB/T 4754）执行。境外机构按“境外”填报。填报所属行业的小类代码对应的行业'
@@ -157,7 +157,7 @@ USE EAST4
         UNION ALL SELECT 2  ,'GQSFZY'   ,N'股权是否质押'            ,'C'    ,3      ,0      ,'selected'     ,'2002'     ,1      ,N'必填'                                                                ,N''
         UNION ALL SELECT 2  ,'GQZYBL'   ,N'股权质押比例'            ,'D'    ,10     ,4      ,'input'        ,''         ,2      ,N'条件性必填。若“股权是否质押”填报是，需填写'                          ,N''
         UNION ALL SELECT 2  ,'GQSFDJ'   ,N'股权是否冻结'            ,'C'    ,3      ,0      ,'selected'     ,'2002'     ,1      ,N'必填'                                                                ,N''
-        UNION ALL SELECT 2  ,'DJBL'     ,N'股权冻结比例'            ,'D'    ,10     ,4      ,'input'        ,''         ,2      ,N'条件性必填。若“股权是否冻结”填报是，需填写'                          ,N''
+        UNION ALL SELECT 2  ,'GQDJBL'    ,N'股权冻结比例'            ,'D'    ,10     ,4      ,'input'        ,''         ,2      ,N'条件性必填。若“股权是否冻结”填报是，需填写'                          ,N''
     
     INSERT INTO TEREPORTFIELDVERIFY(REPORT_ID,FIELD_CODE,FIELD_NAME,REF_FIELD_CODE,REF_FIELD_VALUE )
                   SELECT 2,   N'GDZJLX',      N'股东证件类型',       N'GDLX',  N'1'    -- 股东类型 = 1-自然人
@@ -185,7 +185,7 @@ USE EAST4
         UNION ALL SELECT 2,   N'FDDBR',       N'股东证件号码',       N'GDLX',  N'7'    -- 股东类型 = 7-境外
         UNION ALL SELECT 2,   N'GDJYFW',      N'股东业务或经营范围', N'GDLX',  N'7'    -- 股东类型 = 7-境外
 
-        UNION ALL SELECT 2,   N'GGXZ',        N'机构性质',           N'GDLX'    ,N'2'    -- 股东类型 = 2-个体工商户
+        UNION ALL SELECT 2,   N'JGXZ',        N'机构性质',           N'GDLX'    ,N'2'    -- 股东类型 = 2-个体工商户
         UNION ALL SELECT 2,   N'QYZCLB',      N'企业注册类别',       N'GDLX'    ,N'2'    -- 股东类型 = 2-个体工商户
         UNION ALL SELECT 2,   N'HYFL',        N'行业分类',           N'GDLX'    ,N'2'    -- 股东类型 = 2-个体工商户
         UNION ALL SELECT 2,   N'HYMX',        N'行业明细',           N'GDLX'    ,N'2'    -- 股东类型 = 2-个体工商户
@@ -195,7 +195,7 @@ USE EAST4
         UNION ALL SELECT 2,   N'ZCDZ',        N'注册地址',           N'GDLX'    ,N'2'    -- 股东类型 = 2-个体工商户
         UNION ALL SELECT 2,   N'SJBGDZ',      N'实际办公地址',       N'GDLX'    ,N'2'    -- 股东类型 = 2-个体工商户
         UNION ALL SELECT 2,   N'SJKZRBS',     N'实际控制人标识',     N'GDLX'    ,N'2'    -- 股东类型 = 2-个体工商户
-        UNION ALL SELECT 2,   N'GGXZ',        N'机构性质',           N'GDLX'    ,N'4'    -- 股东类型 = 4-非金融企业
+        UNION ALL SELECT 2,   N'JGXZ',        N'机构性质',           N'GDLX'    ,N'4'    -- 股东类型 = 4-非金融企业
         UNION ALL SELECT 2,   N'QYZCLB',      N'企业注册类别',       N'GDLX'    ,N'4'    -- 股东类型 = 4-非金融企业
         UNION ALL SELECT 2,   N'HYFL',        N'行业分类',           N'GDLX'    ,N'4'    -- 股东类型 = 4-非金融企业
         UNION ALL SELECT 2,   N'HYMX',        N'行业明细',           N'GDLX'    ,N'4'    -- 股东类型 = 4-非金融企业
@@ -205,7 +205,7 @@ USE EAST4
         UNION ALL SELECT 2,   N'ZCDZ',        N'注册地址',           N'GDLX'    ,N'4'    -- 股东类型 = 4-非金融企业
         UNION ALL SELECT 2,   N'SJBGDZ',      N'实际办公地址',       N'GDLX'    ,N'4'    -- 股东类型 = 4-非金融企业
         UNION ALL SELECT 2,   N'SJKZRBS',     N'实际控制人标识',     N'GDLX'    ,N'4'    -- 股东类型 = 4-非金融企业
-        UNION ALL SELECT 2,   N'GGXZ',        N'机构性质',           N'GDLX'    ,N'5'    -- 股东类型 = 5-金融机构（实体）
+        UNION ALL SELECT 2,   N'JGXZ',        N'机构性质',           N'GDLX'    ,N'5'    -- 股东类型 = 5-金融机构（实体）
         UNION ALL SELECT 2,   N'QYZCLB',      N'企业注册类别',       N'GDLX'    ,N'5'    -- 股东类型 = 5-金融机构（实体）
         UNION ALL SELECT 2,   N'HYFL',        N'行业分类',           N'GDLX'    ,N'5'    -- 股东类型 = 5-金融机构（实体）
         UNION ALL SELECT 2,   N'HYMX',        N'行业明细',           N'GDLX'    ,N'5'    -- 股东类型 = 5-金融机构（实体）
@@ -215,7 +215,7 @@ USE EAST4
         UNION ALL SELECT 2,   N'ZCDZ',        N'注册地址',           N'GDLX'    ,N'5'    -- 股东类型 = 5-金融机构（实体）
         UNION ALL SELECT 2,   N'SJBGDZ',      N'实际办公地址',       N'GDLX'    ,N'5'    -- 股东类型 = 5-金融机构（实体）
         UNION ALL SELECT 2,   N'SJKZRBS',     N'实际控制人标识',     N'GDLX'    ,N'5'    -- 股东类型 = 5-金融机构（实体）
-        UNION ALL SELECT 2,   N'GGXZ',        N'机构性质',           N'GDLX'    ,N'6'    -- 股东类型 = 6-特定目的载体
+        UNION ALL SELECT 2,   N'JGXZ',        N'机构性质',           N'GDLX'    ,N'6'    -- 股东类型 = 6-特定目的载体
         UNION ALL SELECT 2,   N'QYZCLB',      N'企业注册类别',       N'GDLX'    ,N'6'    -- 股东类型 = 6-特定目的载体
         UNION ALL SELECT 2,   N'HYFL',        N'行业分类',           N'GDLX'    ,N'6'    -- 股东类型 = 6-特定目的载体
         UNION ALL SELECT 2,   N'HYMX',        N'行业明细',           N'GDLX'    ,N'6'    -- 股东类型 = 6-特定目的载体
@@ -225,7 +225,7 @@ USE EAST4
         UNION ALL SELECT 2,   N'ZCDZ',        N'注册地址',           N'GDLX'    ,N'6'    -- 股东类型 = 6-特定目的载体
         UNION ALL SELECT 2,   N'SJBGDZ',      N'实际办公地址',       N'GDLX'    ,N'6'    -- 股东类型 = 6-特定目的载体
         UNION ALL SELECT 2,   N'SJKZRBS',     N'实际控制人标识',     N'GDLX'    ,N'6'    -- 股东类型 = 6-特定目的载体
-        UNION ALL SELECT 2,   N'GGXZ',        N'机构性质',           N'GDLX'    ,N'7'    -- 股东类型 = 7-境外
+        UNION ALL SELECT 2,   N'JGXZ',        N'机构性质',           N'GDLX'    ,N'7'    -- 股东类型 = 7-境外
         UNION ALL SELECT 2,   N'QYZCLB',      N'企业注册类别',       N'GDLX'    ,N'7'    -- 股东类型 = 7-境外
         UNION ALL SELECT 2,   N'HYFL',        N'行业分类',           N'GDLX'    ,N'7'    -- 股东类型 = 7-境外
         UNION ALL SELECT 2,   N'HYMX',        N'行业明细',           N'GDLX'    ,N'7'    -- 股东类型 = 7-境外
@@ -242,7 +242,7 @@ USE EAST4
         UNION ALL SELECT 2,   N'SJKZRZJHM',   N'实际控制人证件号码', N'SJKZRBS', N'1' -- 实际控制人标识 = 1-是
         UNION ALL SELECT 2,   N'YZXDRZB',     N'一致行动人组别',     N'YZXDRBS', N'1' -- 一致行动人标识 = 1-是
         UNION ALL SELECT 2,   N'GQZYBL',      N'股权质押比例',       N'GQSFZY',  N'1'  -- 股权是否质押 = 1-是
-        UNION ALL SELECT 2,   N'DJBL',        N'股权冻结比例',       N'GQSFDJ',  N'1'  -- 股权冻结比例 = 1-是
+        UNION ALL SELECT 2,   N'GQDJBL',      N'股权冻结比例',       N'GQSFDJ',  N'1'  -- 股权冻结比例 = 1-是
     --```
 
     --## 3.3.   N'A03', N'员工信息表'
