@@ -165,14 +165,14 @@ CREATE TABLE TA02GDXXB
 (   
         ID              INTEGER         NOT NULL        IDENTITY ,  --记录号
         GDLX            NVARCHAR(30)    NOT NULL                 ,  --股东类型(004)必填
-        XTJGMC          NVARCHAR(200)   NOT NULL                 ,  --股东名称必填
+        GDMC            NVARCHAR(200)   NOT NULL                 ,  --股东名称必填
         GDZJLX          NVARCHAR(40)                             ,  --股东证件类型(005)必填
         GDZJHM          NVARCHAR(60)                             ,  --股东证件号码必填
         FDDBR           NVARCHAR(200)                            ,  --法定代表人必填
         GDJYFW          NVARCHAR(2000)                           ,  --股东业务或经营范围必填
         KGFS            NVARCHAR(20)                             ,  --控股方式(006)必填
         CGBL            DECIMAL(10,4)   NOT NULL    DEFAULT 0    ,  --持股比例必填
-        GGXZ            NVARCHAR(60)                             ,  --机构性质(007)     若自然人股东，可不填
+        JGXZ            NVARCHAR(60)                             ,  --机构性质(007)     若自然人股东，可不填
         QYZCLB          NVARCHAR(30)                             ,  --企业注册类别(008) 择性必填，除自然人/个体工商户/广义政府/特定目的载体外，需填写
         HYFL            NVARCHAR(20)                             ,  --行业分类(009)若自然人股东，可不填
         HYMX            NVARCHAR(12)                             ,  --行业明细(010)若自然人股东，可不填
@@ -186,13 +186,16 @@ CREATE TABLE TA02GDXXB
         SJKZRMC         NVARCHAR(200)                            ,  --实际控制人名称"选择性填写若实际控制人标识选是，需填写"
         SJKZRZJLX       NVARCHAR(40)                             ,  --实际控制人证件类型（005）"选择性填写若实际控制人标识选是，需填写"
         SJKZRZJHM       NVARCHAR(60)                             ,  --实际控制人证件号码"选择性填写若实际控制人标识选是，需填写"
+--      ZZSYRMC	        NVARCHAR(2000)                           ,  --
+--      ZZSYRZJLX       NVARCHAR(2000)                           ,  --
+--      ZZSYRZJHM       NVARCHAR(2000)                           ,  --
         GDZT            NVARCHAR(10)                             ,  --股东状态(2009)必填
         YZXDRBS         NVARCHAR(3)                              ,  --一致行动人标识(2002)
         YZXDRZB         NVARCHAR(8)                              ,  --一致行动人组别
         GQSFZY          NVARCHAR(3)                              ,  --股权是否质押(2002)       必填
         GQZYBL          DECIMAL(10,4)                            ,  --股权质押比例             选择性必填，若“股权是否质押”填报“1-是”，需填写
         GQSFDJ          NVARCHAR(3)                              ,  --股权是否冻结(2002)       必填
-        DJBL            DECIMAL(10,4)                            ,  --股权冻结比例             选择性必填，若“股权是否冻结”填报“1-是”，需填写
+        GQDJBL          DECIMAL(10,4)                            ,  --股权冻结比例             选择性必填，若“股权是否冻结”填报“1-是”，需填写
         DS_RECORD_NO    NVARCHAR(32)                             ,  --数据源.表.主键值
         INSERT_MONTH    INTEGER                                  ,  --首次同步日期（不可变）,insert 时取 TSYSTEM.CURRENT_MONTH
         SYNC_MONTH      INTEGER                                  ,  --同步月份
