@@ -205,8 +205,33 @@ CREATE TABLE TA02GDXXB
         CONSTRAINT PRI_TA02GDXXB  PRIMARY KEY(ID)
 )
 GO
-CREATE UNIQUE INDEX IDX_TA02GDXXB_1 ON TA02GDXXB(XTJGMC,GDZJLX,GDZJHM)
+CREATE UNIQUE INDEX IDX_TA02GDXXB_1 ON TA02GDXXB(GDMC,GDZJLX,GDZJHM)
 GO
+
+
+-- **股东受益所有人**
+IF  EXISTS(SELECT 1 FROM sysobjects WHERE NAME = 'TA02GDZZSYRXXB')
+    DROP TABLE TA02GDZZSYRXXB
+GO
+
+CREATE TABLE TA02GDZZSYRXXB
+(        
+        ID              INTEGER         NOT NULL        IDENTITY ,  --记录号
+        GDID            INTEGER         NOT NULL                 ,  --股东ID TA02GDXXB.ID
+        ZZSYRMC	        NVARCHAR(2000)  NOT NULL                 ,  --最终受益人名称
+        ZZSYRZJLX       NVARCHAR(2000)  NOT NULL                 ,  --最终受益人证件类型
+        ZZSYRZJHM       NVARCHAR(2000)  NOT NULL                 ,  --最终受益人证件号码
+        DS_RECORD_NO    NVARCHAR(32)                             ,  --数据源.表.主键值
+        INSERT_MONTH    INTEGER         NOT NULL                 ,  --首次同步日期（不可变）,insert 时取 TSYSTEM.CURRENT_MONTH
+        SYNC_MONTH      INTEGER         NOT NULL                 ,  --同步月份
+        SYNC_STATUS     INTEGER         NOT NULL    DEFAULT 0    ,  --数据同步情况：0-无变更 1-变化量 2-增加量
+        LOCK_FLAG       INTEGER         NOT NULL    DEFAULT 1    ,  --锁定标志：1-可更新/（读写） 2-锁定（只读）
+        COMPLETE_FLAG   INTEGER         NOT NULL    DEFAULT 1    ,  --数据填报完成标志：1.未完整 2.自动检查完成 3.手动检查完成
+
+)
+GO
+
+CREATE UNIQUE INDEX IDX_TA02GDZZSYRXXB_1 ON TA02GDZZSYRXXB(XTJGMC,GDZJLX,GDZJHM)
 --```
 --## 2.3.员工信息表
 --```sql
