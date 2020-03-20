@@ -141,7 +141,8 @@ USE EAST4
         UNION ALL SELECT 2  ,'HYMX'     ,N'行业明细'                ,'C'    ,12     ,0      ,'selected'     ,'1002'     ,2      ,'GDLX'         ,N'条件性必填自然人、广义政府股东非必填'                                ,N'填写机构所属行业明细代码,行业分类按《国民经济行业分类》（GB/T 4754）执行。境外机构按“境外”填报。填报所属行业的小类代码对应的行业'
         UNION ALL SELECT 2  ,'GSZCRQ'   ,N'工商注册日期'            ,'C'    ,8      ,0      ,'input'        ,''         ,2      ,'GDLX'         ,N'条件性必填自然人、广义政府股东非必填'                                ,N'机构成立日期，YYYYMMDD，默认值99991231'
         UNION ALL SELECT 2  ,'ZCZB'     ,N'注册资本'                ,'D'    ,20     ,2      ,'input'        ,''         ,2      ,'GDLX'         ,N'条件性必填自然人、广义政府股东非必填'                                ,N'按实际金额填写,以工商注册金额为准。'
-        UNION ALL SELECT 2  ,'ZCDQ'     ,N'注册地区'                ,'C'    ,12     ,0      ,'selected'     ,'1001'     ,2      ,'GDLX'         ,N'条件性必填自然人、广义政府股东非必填'                                ,N'填写信托公司股东注册地区代码,境内：按国标GB/T 2260中华人民共和国行政区划6位代码填报。参照身份证前六位的行政区域代码对应的省（区、市）、地（区、市、州、盟）、县（区、市、旗）'
+        UNION ALL SELECT 2  ,'ZCGB'     ,N'注册国别'                ,'C'    ,12     ,0      ,'selected'     ,'1003'     ,2      ,'GDLX'         ,N'条件性必填自然人、广义政府股东非必填'                                ,N'填写信托公司股东注册地区代码,境内：按国标GB/T 2260中华人民共和国行政区划6位代码填报。参照身份证前六位的行政区域代码对应的省（区、市）、地（区、市、州、盟）、县（区、市、旗）'
+        UNION ALL SELECT 2  ,'ZCDQ'     ,N'注册地区'                ,'C'    ,12     ,0      ,'selected'     ,'1001'     ,2      ,'ZCGB'         ,N'条件性必填自然人、广义政府股东非必填'                                ,N'填写信托公司股东注册地区代码,境内：按国标GB/T 2260中华人民共和国行政区划6位代码填报。参照身份证前六位的行政区域代码对应的省（区、市）、地（区、市、州、盟）、县（区、市、旗）'
         UNION ALL SELECT 2  ,'ZCDZ'     ,N'注册地址'                ,'C'    ,200    ,0      ,'input'        ,''         ,2      ,'GDLX'         ,N'条件性必填自然人、广义政府股东非必填'                                ,N'填写信托公司股东注册地地址按照工商注册信息中的注册地填报，要写明省（区、市）、地（区、市、州、盟）、县（区、市、旗）'
         UNION ALL SELECT 2  ,'SJBGDZ'   ,N'实际办公地址'            ,'C'    ,200    ,0      ,'input'        ,''         ,2      ,'GDLX'         ,N'条件性必填自然人、广义政府股东非必填'                                ,N'填写信托公司股东实际办公地址:按照机构实际办公地址填报，要写明省（区、市）、地（区、市、州、盟）、县（区、市、旗）'
         UNION ALL SELECT 2  ,'SJKZRBS'  ,N'实际控制人标识'          ,'C'    ,3      ,0      ,'selected'     ,'2002'     ,2      ,'GDLX'         ,N'条件性必填自然人、广义政府股东非必填'                                ,N'填写枚举值。该股东是否有实际控制人，实际控制人指虽不是公司的股东，但通过投资关系、协议或者其他安排，能够实际支配公司行为的人。'
@@ -192,7 +193,8 @@ USE EAST4
         UNION ALL SELECT 2,   N'HYMX',        N'行业明细',           N'GDLX'    ,N'2'    -- 股东类型 = 2-个体工商户
         UNION ALL SELECT 2,   N'GSZCRQ',      N'工商注册日期',       N'GDLX'    ,N'2'    -- 股东类型 = 2-个体工商户
         UNION ALL SELECT 2,   N'ZCZB',        N'注册资本',           N'GDLX'    ,N'2'    -- 股东类型 = 2-个体工商户
-        UNION ALL SELECT 2,   N'ZCDQ',        N'注册地区',           N'GDLX'    ,N'2'    -- 股东类型 = 2-个体工商户
+        --UNION ALL SELECT 2,   N'ZCDQ',        N'注册地区',           N'GDLX'    ,N'2'    -- 股东类型 = 2-个体工商户
+        UNION ALL SELECT 2,   N'ZCGB',        N'注册地区',           N'GDLX'    ,N'2'    -- 股东类型 = 2-个体工商户
         UNION ALL SELECT 2,   N'ZCDZ',        N'注册地址',           N'GDLX'    ,N'2'    -- 股东类型 = 2-个体工商户
         UNION ALL SELECT 2,   N'SJBGDZ',      N'实际办公地址',       N'GDLX'    ,N'2'    -- 股东类型 = 2-个体工商户
         UNION ALL SELECT 2,   N'SJKZRBS',     N'实际控制人标识',     N'GDLX'    ,N'2'    -- 股东类型 = 2-个体工商户
@@ -202,7 +204,8 @@ USE EAST4
         UNION ALL SELECT 2,   N'HYMX',        N'行业明细',           N'GDLX'    ,N'4'    -- 股东类型 = 4-非金融企业
         UNION ALL SELECT 2,   N'GSZCRQ',      N'工商注册日期',       N'GDLX'    ,N'4'    -- 股东类型 = 4-非金融企业
         UNION ALL SELECT 2,   N'ZCZB',        N'注册资本',           N'GDLX'    ,N'4'    -- 股东类型 = 4-非金融企业
-        UNION ALL SELECT 2,   N'ZCDQ',        N'注册地区',           N'GDLX'    ,N'4'    -- 股东类型 = 4-非金融企业
+        --UNION ALL SELECT 2,   N'ZCDQ',        N'注册地区',           N'GDLX'    ,N'4'    -- 股东类型 = 4-非金融企业
+        UNION ALL SELECT 2,   N'ZCGB',        N'注册国别',           N'GDLX'    ,N'4'    -- 股东类型 = 4-非金融企业
         UNION ALL SELECT 2,   N'ZCDZ',        N'注册地址',           N'GDLX'    ,N'4'    -- 股东类型 = 4-非金融企业
         UNION ALL SELECT 2,   N'SJBGDZ',      N'实际办公地址',       N'GDLX'    ,N'4'    -- 股东类型 = 4-非金融企业
         UNION ALL SELECT 2,   N'SJKZRBS',     N'实际控制人标识',     N'GDLX'    ,N'4'    -- 股东类型 = 4-非金融企业
@@ -212,7 +215,8 @@ USE EAST4
         UNION ALL SELECT 2,   N'HYMX',        N'行业明细',           N'GDLX'    ,N'5'    -- 股东类型 = 5-金融机构（实体）
         UNION ALL SELECT 2,   N'GSZCRQ',      N'工商注册日期',       N'GDLX'    ,N'5'    -- 股东类型 = 5-金融机构（实体）
         UNION ALL SELECT 2,   N'ZCZB',        N'注册资本',           N'GDLX'    ,N'5'    -- 股东类型 = 5-金融机构（实体）
-        UNION ALL SELECT 2,   N'ZCDQ',        N'注册地区',           N'GDLX'    ,N'5'    -- 股东类型 = 5-金融机构（实体）
+        --UNION ALL SELECT 2,   N'ZCDQ',        N'注册地区',           N'GDLX'    ,N'5'    -- 股东类型 = 5-金融机构（实体）
+        UNION ALL SELECT 2,   N'ZCGB',        N'注册国别',           N'GDLX'    ,N'5'    -- 股东类型 = 5-金融机构（实体）
         UNION ALL SELECT 2,   N'ZCDZ',        N'注册地址',           N'GDLX'    ,N'5'    -- 股东类型 = 5-金融机构（实体）
         UNION ALL SELECT 2,   N'SJBGDZ',      N'实际办公地址',       N'GDLX'    ,N'5'    -- 股东类型 = 5-金融机构（实体）
         UNION ALL SELECT 2,   N'SJKZRBS',     N'实际控制人标识',     N'GDLX'    ,N'5'    -- 股东类型 = 5-金融机构（实体）
@@ -222,7 +226,8 @@ USE EAST4
         UNION ALL SELECT 2,   N'HYMX',        N'行业明细',           N'GDLX'    ,N'6'    -- 股东类型 = 6-特定目的载体
         UNION ALL SELECT 2,   N'GSZCRQ',      N'工商注册日期',       N'GDLX'    ,N'6'    -- 股东类型 = 6-特定目的载体
         UNION ALL SELECT 2,   N'ZCZB',        N'注册资本',           N'GDLX'    ,N'6'    -- 股东类型 = 6-特定目的载体
-        UNION ALL SELECT 2,   N'ZCDQ',        N'注册地区',           N'GDLX'    ,N'6'    -- 股东类型 = 6-特定目的载体
+        --UNION ALL SELECT 2,   N'ZCDQ',        N'注册地区',           N'GDLX'    ,N'6'    -- 股东类型 = 6-特定目的载体
+        UNION ALL SELECT 2,   N'ZCGB',        N'注册国别',           N'GDLX'    ,N'6'    -- 股东类型 = 6-特定目的载体
         UNION ALL SELECT 2,   N'ZCDZ',        N'注册地址',           N'GDLX'    ,N'6'    -- 股东类型 = 6-特定目的载体
         UNION ALL SELECT 2,   N'SJBGDZ',      N'实际办公地址',       N'GDLX'    ,N'6'    -- 股东类型 = 6-特定目的载体
         UNION ALL SELECT 2,   N'SJKZRBS',     N'实际控制人标识',     N'GDLX'    ,N'6'    -- 股东类型 = 6-特定目的载体
@@ -232,11 +237,13 @@ USE EAST4
         UNION ALL SELECT 2,   N'HYMX',        N'行业明细',           N'GDLX'    ,N'7'    -- 股东类型 = 7-境外
         UNION ALL SELECT 2,   N'GSZCRQ',      N'工商注册日期',       N'GDLX'    ,N'7'    -- 股东类型 = 7-境外
         UNION ALL SELECT 2,   N'ZCZB',        N'注册资本',           N'GDLX'    ,N'7'    -- 股东类型 = 7-境外
-        UNION ALL SELECT 2,   N'ZCDQ',        N'注册地区',           N'GDLX'    ,N'7'    -- 股东类型 = 7-境外
+        --UNION ALL SELECT 2,   N'ZCDQ',        N'注册地区',           N'GDLX'    ,N'7'    -- 股东类型 = 7-境外
+        UNION ALL SELECT 2,   N'ZCGB',        N'注册国别',           N'GDLX'    ,N'7'    -- 股东类型 = 7-境外
         UNION ALL SELECT 2,   N'ZCDZ',        N'注册地址',           N'GDLX'    ,N'7'    -- 股东类型 = 7-境外
         UNION ALL SELECT 2,   N'SJBGDZ',      N'实际办公地址',       N'GDLX'    ,N'7'    -- 股东类型 = 7-境外
         UNION ALL SELECT 2,   N'SJKZRBS',     N'实际控制人标识',     N'GDLX'    ,N'7'    -- 股东类型 = 7-境外
 
+        UNION ALL SELECT 2,   N'ZCDQ',        N'注册地区',           N'ZCGB'    ,N'CHN'    -- 股东类型 = 7-境外
         UNION ALL SELECT 2,   N'SJKZRLX',     N'实际控制人类型',     N'SJKZRBS', N'1' -- 实际控制人标识 = 1-是
         UNION ALL SELECT 2,   N'SJKZRMC',     N'实际控制人名称',     N'SJKZRBS', N'1' -- 实际控制人标识 = 1-是
         UNION ALL SELECT 2,   N'SJKZRZJLX',   N'实际控制人证件类型', N'SJKZRBS', N'1' -- 实际控制人标识 = 1-是
@@ -269,7 +276,8 @@ USE EAST4
         UNION ALL SELECT 3, 'YGZT'      ,N'员工状态'        ,'C'    ,20     ,0  ,'selected'         ,'2014'  ,1     ,''           ,'必填'                                                 ,N'填写枚举值。员工在职状态,待岗/在职(默认)/离职/停职/退休/长期休假/其他'
         UNION ALL SELECT 3, 'RZRQ'      ,N'入职日期'        ,'C'    ,8      ,0  ,'input'            ,''      ,2     ,'YGZT'       ,'条件性必填,若员工状态为在职、停职、退休时，必填'      ,N'员工入职时间，以信托公司人力系统记载日期为准'
         UNION ALL SELECT 3, 'LZRQ'      ,N'离职日期'        ,'C'    ,8      ,0  ,'input'            ,''      ,2     ,'YGZT'       ,'条件性必填,若员工状态为离职时，必填'                  ,N'员工离职时间，以信托公司人力系统记载日期为准'
-        UNION ALL SELECT 3, 'BGDQ'      ,N'办公地区'        ,'C'    ,12     ,0  ,'selected'         ,'1001'  ,1     ,''           ,'必填'                                                 ,N'填写员工办公地点,境内：按国标GB/T 2260 中华人民共和国行政区划6位代码填报。参照身份证前六位的行政区域代码对应的省（区、市）、地（区、市、州、盟）、县（区、市、旗）。 境外：按照《GB/T 2659 世界各国和地区名称代码》填报国家（地区）代码。若该员工已离职或已退休，办公地点以最近一次办公地点为准'
+        UNION ALL SELECT 3, 'BGGB'      ,N'办公国别'        ,'C'    ,12     ,0  ,'selected'         ,'1003'  ,1     ,''           ,'必填'                                                 ,N'填写员工办公地点,境内：按国标GB/T 2260 中华人民共和国行政区划6位代码填报。参照身份证前六位的行政区域代码对应的省（区、市）、地（区、市、州、盟）、县（区、市、旗）。 境外：按照《GB/T 2659 世界各国和地区名称代码》填报国家（地区）代码。若该员工已离职或已退休，办公地点以最近一次办公地点为准'
+        UNION ALL SELECT 3, 'BGDQ'      ,N'办公地区'        ,'C'    ,12     ,0  ,'selected'         ,'1001'  ,2     ,'BGGB'       ,'必填'                                                 ,N'填写员工办公地点,境内：按国标GB/T 2260 中华人民共和国行政区划6位代码填报。参照身份证前六位的行政区域代码对应的省（区、市）、地（区、市、州、盟）、县（区、市、旗）。 境外：按照《GB/T 2659 世界各国和地区名称代码》填报国家（地区）代码。若该员工已离职或已退休，办公地点以最近一次办公地点为准'
         UNION ALL SELECT 3, 'GWMC'      ,N'岗位名称'        ,'C'    ,30     ,0  ,'input'            ,''      ,1     ,''           ,'必填'                                                 ,N'填写岗位名称。信托公司自定义，对于该岗位的简称，以各信托公司内部发文为准'
         UNION ALL SELECT 3, 'GWMS'      ,N'岗位描述'        ,'C'    ,200    ,0  ,'input'            ,''      ,1     ,''           ,'必填'                                                 ,N'填写岗位描述。信托公司自定义，对于该岗位的简单描述，描述应包含该岗位的工作职责，工作内容等'
 
@@ -282,6 +290,8 @@ USE EAST4
       --UNION ALL SELECT 3,   N'RZRQ',      N'入职日期',      N'YGZT',  N'7' -- 员工状态 = 7-其他
 
         UNION ALL SELECT 3,   N'LZRQ',     N'离职日期',       N'YGZT',  N'3' -- 员工状态 = 3-离职
+
+        UNION ALL SELECT 3,   N'BGDQ',     N'办公地区',       N'BGGB',  N'CHN'  --办公国家 = CHN-中国
 
     --```
 
@@ -300,7 +310,8 @@ USE EAST4
         UNION ALL SELECT 4,'QYZCLB'     ,'企业注册类别'         ,'C',   30      ,0      ,'selected'     ,'2007'    ,2      ,'GLFLX'       ,'条件性必填，若关联方类型选择非金融企业、金融机构（实体）、境外的，需填写'      ,N'填写枚举值，有限责任公司/股份有限公司/分公司/非公司企业法人/营业单位/企业非法人分支机构/个人独资企业/合伙企业/中外合作企业/中外合资企业/外资企业'
         UNION ALL SELECT 4,'GSZCRQ'     ,'工商注册日期'         ,'C',   8       ,0      ,'input'        ,''        ,2      ,'GLFLX'       ,'条件性必填,若关联方是自然人，非必填'                                           ,N'机构成立日期，YYYYMMDD，默认值99991231'
         UNION ALL SELECT 4,'ZCZB'       ,'注册资本'             ,'D',   20      ,2,     'input'         ,''        ,2      ,'GLFLX'       ,'条件性必填,若关联方是自然人，非必填'                                           ,N'按实际金额填写。"以工商注册金额为准若金额涉及到外币，由信托公司自行转换成人民币进行填报"'
-        UNION ALL SELECT 4,'ZCDQ'       ,'注册地区'             ,'C',   12      ,0      ,'selected'     ,'1001'    ,2      ,'GLFLX'       ,'条件性必填,若关联方是自然人，非必填'                                           ,N'填写关联方注册地区代码。境内：按国标GB/T 2260中华人民共和国行政区划6位代码填报。参照身份证前六位的行政区域代码对应的省（区、市）、地（区、市、州、盟）、县（区、市、旗）。 境外：按照《GB/T 2659 世界各国和地区名称代码》填报国家（地区）代码'
+        UNION ALL SELECT 4,'ZCGB'       ,'注册国别'             ,'C',   12      ,0      ,'selected'     ,'1003'    ,2      ,'GLFLX'       ,'条件性必填,若关联方是自然人，非必填'                                           ,N'填写关联方注册地区代码。境内：按国标GB/T 2260中华人民共和国行政区划6位代码填报。参照身份证前六位的行政区域代码对应的省（区、市）、地（区、市、州、盟）、县（区、市、旗）。 境外：按照《GB/T 2659 世界各国和地区名称代码》填报国家（地区）代码'        
+        UNION ALL SELECT 4,'ZCDQ'       ,'注册地区'             ,'C',   12      ,0      ,'selected'     ,'1001'    ,2      ,'ZCGB'        ,'条件性必填,若关联方是自然人，非必填'                                           ,N'填写关联方注册地区代码。境内：按国标GB/T 2260中华人民共和国行政区划6位代码填报。参照身份证前六位的行政区域代码对应的省（区、市）、地（区、市、州、盟）、县（区、市、旗）。 境外：按照《GB/T 2659 世界各国和地区名称代码》填报国家（地区）代码'
         UNION ALL SELECT 4,'ZCDZ'       ,'注册地址'             ,'C',   200     ,0      ,'input'        ,''        ,2      ,'GLFLX'       ,'条件性必填,若关联方是自然人，非必填'                                           ,N'填写关联方注册地地址，按照工商注册信息中的注册地填报，要写明省（区、市）、地（区、市、州、盟）、县（区、市、旗）'
         UNION ALL SELECT 4,'SJBGDZ'     ,'实际办公地址'         ,'C',   200     ,0      ,'input'        ,''        ,2      ,'GLFLX'       ,'条件性必填,若关联方是自然人，非必填'                                           ,N'填写关联方实际办公地址，按照机构实际办公地址填报，要写明省（区、市）、地（区、市、州、盟）、县（区、市、旗）'
 
@@ -309,7 +320,8 @@ USE EAST4
         UNION ALL SELECT 4,   N'HYMX',      N'行业明细',      N'GLFLX',     N'2'      -- 关联方类型 = 2-个体工商户
         UNION ALL SELECT 4,   N'GSZCRQ',    N'工商注册日期',  N'GLFLX',     N'2'      -- 关联方类型 = 2-个体工商户
         UNION ALL SELECT 4,   N'ZCZB',      N'注册资本',      N'GLFLX',     N'2'      -- 关联方类型 = 2-个体工商户
-        UNION ALL SELECT 4,   N'ZCDQ',      N'注册地区',      N'GLFLX',     N'2'      -- 关联方类型 = 2-个体工商户
+        --UNION ALL SELECT 4,   N'ZCDQ',      N'注册地区',      N'GLFLX',     N'2'      -- 关联方类型 = 2-个体工商户
+        UNION ALL SELECT 4,   N'ZCGB',      N'注册国别',      N'GLFLX',     N'2'      -- 关联方类型 = 2-个体工商户
         UNION ALL SELECT 4,   N'ZCDZ',      N'注册地址',      N'GLFLX',     N'2'      -- 关联方类型 = 2-个体工商户
         UNION ALL SELECT 4,   N'SJBGDZ',    N'实际办公地址',  N'GLFLX',     N'2'      -- 关联方类型 = 2-个体工商户
 
@@ -317,7 +329,8 @@ USE EAST4
         UNION ALL SELECT 4,   N'HYMX',      N'行业明细',      N'GLFLX',     N'3'      -- 关联方类型 = 3-广义政府
         UNION ALL SELECT 4,   N'GSZCRQ',    N'工商注册日期',  N'GLFLX',     N'3'      -- 关联方类型 = 3-广义政府
         UNION ALL SELECT 4,   N'ZCZB',      N'注册资本',      N'GLFLX',     N'3'      -- 关联方类型 = 3-广义政府
-        UNION ALL SELECT 4,   N'ZCDQ',      N'注册地区',      N'GLFLX',     N'3'      -- 关联方类型 = 3-广义政府
+        --UNION ALL SELECT 4,   N'ZCDQ',      N'注册地区',      N'GLFLX',     N'3'      -- 关联方类型 = 3-广义政府
+        UNION ALL SELECT 4,   N'ZCGB',      N'注册国别',      N'GLFLX',     N'3'      -- 关联方类型 = 3-广义政府
         UNION ALL SELECT 4,   N'ZCDZ',      N'注册地址',      N'GLFLX',     N'3'      -- 关联方类型 = 3-广义政府
         UNION ALL SELECT 4,   N'SJBGDZ',    N'实际办公地址',  N'GLFLX',     N'3'      -- 关联方类型 = 3-广义政府
 
@@ -325,7 +338,8 @@ USE EAST4
         UNION ALL SELECT 4,   N'HYMX',      N'行业明细',      N'GLFLX',     N'4'      -- 关联方类型 = 4-非金融企业
         UNION ALL SELECT 4,   N'GSZCRQ',    N'工商注册日期',  N'GLFLX',     N'4'      -- 关联方类型 = 4-非金融企业
         UNION ALL SELECT 4,   N'ZCZB',      N'注册资本',      N'GLFLX',     N'4'      -- 关联方类型 = 4-非金融企业
-        UNION ALL SELECT 4,   N'ZCDQ',      N'注册地区',      N'GLFLX',     N'4'      -- 关联方类型 = 4-非金融企业
+        --UNION ALL SELECT 4,   N'ZCDQ',      N'注册地区',      N'GLFLX',     N'4'      -- 关联方类型 = 4-非金融企业
+        UNION ALL SELECT 4,   N'ZCGB',      N'注册国别',      N'GLFLX',     N'4'      -- 关联方类型 = 4-非金融企业
         UNION ALL SELECT 4,   N'ZCDZ',      N'注册地址',      N'GLFLX',     N'4'      -- 关联方类型 = 4-非金融企业
         UNION ALL SELECT 4,   N'SJBGDZ',    N'实际办公地址',  N'GLFLX',     N'4'      -- 关联方类型 = 4-非金融企业
 
@@ -333,7 +347,8 @@ USE EAST4
         UNION ALL SELECT 4,   N'HYMX',      N'行业明细',      N'GLFLX',     N'5'      -- 关联方类型 = 5-金融机构（实体）
         UNION ALL SELECT 4,   N'GSZCRQ',    N'工商注册日期',  N'GLFLX',     N'5'      -- 关联方类型 = 5-金融机构（实体）
         UNION ALL SELECT 4,   N'ZCZB',      N'注册资本',      N'GLFLX',     N'5'      -- 关联方类型 = 5-金融机构（实体）
-        UNION ALL SELECT 4,   N'ZCDQ',      N'注册地区',      N'GLFLX',     N'5'      -- 关联方类型 = 5-金融机构（实体）
+        --UNION ALL SELECT 4,   N'ZCDQ',      N'注册地区',      N'GLFLX',     N'5'      -- 关联方类型 = 5-金融机构（实体）
+        UNION ALL SELECT 4,   N'ZCGB',      N'注册国别',      N'GLFLX',     N'5'      -- 关联方类型 = 5-金融机构（实体）
         UNION ALL SELECT 4,   N'ZCDZ',      N'注册地址',      N'GLFLX',     N'5'      -- 关联方类型 = 5-金融机构（实体）
         UNION ALL SELECT 4,   N'SJBGDZ',    N'实际办公地址',  N'GLFLX',     N'5'      -- 关联方类型 = 5-金融机构（实体）
 
@@ -341,7 +356,8 @@ USE EAST4
         UNION ALL SELECT 4,   N'HYMX',      N'行业明细',      N'GLFLX',     N'6'      -- 关联方类型 = 6-特定目的载体
         UNION ALL SELECT 4,   N'GSZCRQ',    N'工商注册日期',  N'GLFLX',     N'6'      -- 关联方类型 = 6-特定目的载体
         UNION ALL SELECT 4,   N'ZCZB',      N'注册资本',      N'GLFLX',     N'6'      -- 关联方类型 = 6-特定目的载体
-        UNION ALL SELECT 4,   N'ZCDQ',      N'注册地区',      N'GLFLX',     N'6'      -- 关联方类型 = 6-特定目的载体
+       -- UNION ALL SELECT 4,   N'ZCDQ',      N'注册地区',      N'GLFLX',     N'6'      -- 关联方类型 = 6-特定目的载体
+        UNION ALL SELECT 4,   N'ZCGB',      N'注册国别',      N'GLFLX',     N'6'      -- 关联方类型 = 6-特定目的载体
         UNION ALL SELECT 4,   N'ZCDZ',      N'注册地址',      N'GLFLX',     N'6'      -- 关联方类型 = 6-特定目的载体
         UNION ALL SELECT 4,   N'SJBGDZ',    N'实际办公地址',  N'GLFLX',     N'6'      -- 关联方类型 = 6-特定目的载体
 
@@ -349,12 +365,15 @@ USE EAST4
         UNION ALL SELECT 4,   N'HYMX',      N'行业明细',      N'GLFLX',     N'7'      -- 关联方类型 = 7-境外
         UNION ALL SELECT 4,   N'GSZCRQ',    N'工商注册日期',  N'GLFLX',     N'7'      -- 关联方类型 = 7-境外
         UNION ALL SELECT 4,   N'ZCZB',      N'注册资本',      N'GLFLX',     N'7'      -- 关联方类型 = 7-境外
-        UNION ALL SELECT 4,   N'ZCDQ',      N'注册地区',      N'GLFLX',     N'7'      -- 关联方类型 = 7-境外
+        --UNION ALL SELECT 4,   N'ZCDQ',      N'注册地区',      N'GLFLX',     N'7'      -- 关联方类型 = 7-境外
+        UNION ALL SELECT 4,   N'ZCGB',      N'注册国别',      N'GLFLX',     N'7'      -- 关联方类型 = 7-境外
         UNION ALL SELECT 4,   N'ZCDZ',      N'注册地址',      N'GLFLX',     N'7'      -- 关联方类型 = 7-境外
         UNION ALL SELECT 4,   N'SJBGDZ',    N'实际办公地址',  N'GLFLX',     N'7'      -- 关联方类型 = 7-境外
 
         UNION ALL SELECT 4,   N'QYZCLB',   N'企业注册类别',   N'GLFLX',     N'4'      -- 关联方类型 = 4-非金融企业
         UNION ALL SELECT 4,   N'QYZCLB',   N'企业注册类别',   N'GLFLX',     N'5'      -- 关联方类型 = 5-金融机构（实体）
         UNION ALL SELECT 4,   N'QYZCLB',   N'企业注册类别',   N'GLFLX',     N'7'      -- 关联方类型 = 7-境外
+
+        UNION ALL SELECT 4,   N'ZCDQ'  ,   N'注册地区',       N'ZCGB',      N'CHN'      -- 关联方类型 = 7-境外
     --```
 GO
