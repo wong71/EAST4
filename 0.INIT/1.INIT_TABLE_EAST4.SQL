@@ -70,6 +70,23 @@ CREATE UNIQUE INDEX IDX_TEDICTGB4754_1 ON TEDICTGB4754(INDUSTRY_CODE)
 GO
 --```
 
+-- ### 1.1.4 国别（GB/T 2659）
+--```sql
+IF EXISTS(SELECT 1 FROM sysobjects WHERE name = 'TEDICTGB2659')
+    DROP TABLE TEDICTGB2659
+GO
+CREATE TABLE TEDICTGB2659
+(
+        SERIAL_NO       INTEGER         NOT NULL    IDENTITY ,   --自动编号做主键
+        COUNTRY_CODE    NVARCHAR(10)    NOT NULL             ,
+        COUNTRY_NAME    NVARCHAR(200)   NOT NULL             ,
+        ORDER_ID        INTEGER         NOT NULL    DEFAULT 2,
+        CONSTRAINT PRI_TEDICTGB2659 PRIMARY KEY(SERIAL_NO)
+)
+CREATE UNIQUE INDEX IDX_TEDICTGB2659_1 ON TEDICTGB2659(COUNTRY_CODE)
+GO
+--```
+
 --## 1.2.系统开关参数配置表
 --```sql
 IF EXISTS(SELECT 1 FROM sysobjects WHERE name = 'TSYSCONTROL')
@@ -197,21 +214,22 @@ GO
 CREATE TABLE TA02GDXXB
 (   
         ID              INTEGER         NOT NULL        IDENTITY ,  --记录号
-        GDLX            NVARCHAR(30)    NOT NULL                 ,  --股东类型(004)必填
+        GDLX            NVARCHAR(30)    NOT NULL                 ,  --股东类型(2003)必填
         GDMC            NVARCHAR(200)   NOT NULL                 ,  --股东名称必填
-        GDZJLX          NVARCHAR(40)                             ,  --股东证件类型(005)必填
+        GDZJLX          NVARCHAR(40)                             ,  --股东证件类型(2004)必填
         GDZJHM          NVARCHAR(60)                             ,  --股东证件号码必填
         FDDBR           NVARCHAR(200)                            ,  --法定代表人必填
         GDJYFW          NVARCHAR(2000)                           ,  --股东业务或经营范围必填
-        KGFS            NVARCHAR(20)                             ,  --控股方式(006)必填
+        KGFS            NVARCHAR(20)                             ,  --控股方式(2005)必填
         CGBL            DECIMAL(10,4)   NOT NULL    DEFAULT 0    ,  --持股比例必填
-        JGXZ            NVARCHAR(60)                             ,  --机构性质(007)     若自然人股东，可不填
-        QYZCLB          NVARCHAR(30)                             ,  --企业注册类别(008) 择性必填，除自然人/个体工商户/广义政府/特定目的载体外，需填写
-        HYFL            NVARCHAR(20)                             ,  --行业分类(009)若自然人股东，可不填
-        HYMX            NVARCHAR(12)                             ,  --行业明细(010)若自然人股东，可不填
+        JGXZ            NVARCHAR(60)                             ,  --机构性质(2006)     若自然人股东，可不填
+        QYZCLB          NVARCHAR(30)                             ,  --企业注册类别(2007) 择性必填，除自然人/个体工商户/广义政府/特定目的载体外，需填写
+        HYFL            NVARCHAR(20)                             ,  --行业分类(2008)若自然人股东，可不填
+        HYMX            NVARCHAR(12)                             ,  --行业明细(1002)若自然人股东，可不填
         GSZCRQ          NVARCHAR(8)                              ,  --工商注册日期若自然人股东，可不填
         ZCZB            DECIMAL(20,2)                            ,  --注册资本  若自然人股东，可不填
-        ZCDQ            NVARCHAR(12)                             ,  --注册地区(002)若自然人股东，可不填
+        ZCGB            NVARCHAR(12)                             ,  --注册国（1001）
+        ZCDQ            NVARCHAR(12)                             ,  --注册地区(1003)若自然人股东，可不填
         ZCDZ            NVARCHAR(200)                            ,  --注册地址若自然人股东，可不填
         SJBGDZ          NVARCHAR(200)                            ,  --实际办公地址若自然人股东，可不填
         SJKZRBS         NVARCHAR(3)                              ,  --实际控制人标识（003）若自然人股东，可不填
@@ -288,6 +306,7 @@ CREATE TABLE TA03YGXXB
         YGZT            NVARCHAR(20)                             ,  --员工状态(2014)       必填
         RZRQ            NVARCHAR(8)                              ,  --入职日期             条件性必填,若员工状态为在职、停职、退休时，必填
         LZRQ            NVARCHAR(8)                              ,  --离职日期             条件性必填,若员工状态为离职时，必填
+        BGGB            NVARCHAR(12)                             ,  --办公国别(1003)       必填
         BGDQ            NVARCHAR(12)                             ,  --办公地区(1001)       必填
         GWMC            NVARCHAR(30)                             ,  --岗位名称             必填
         GWMS            NVARCHAR(200)                            ,  --岗位描述             必填
@@ -326,6 +345,7 @@ CREATE TABLE TA04GLFXXB
         QYZCLB          NVARCHAR(30)                         ,  -- 企业注册类别 (2007) 条件性必填，若关联方类型选择非金融企业、金融机构（实体）、境外的，需填写 
         GSZCRQ          NVARCHAR(8)                          ,  -- 工商注册日期        条件性必填,若关联方是自然人，非必填
         ZCZB            DECIMAL(20,2)                        ,  -- 注册资本            条件性必填,若关联方是自然人，非必填
+        ZCGB            NVARCHAR(12)                         ,  -- 注册国别 (1003)     条件性必填,若关联方是自然人，非必填
         ZCDQ            NVARCHAR(12)                         ,  -- 注册地区 (1001)     条件性必填,若关联方是自然人，非必填
         ZCDZ            NVARCHAR(200)                        ,  -- 注册地址            条件性必填,若关联方是自然人，非必填
         SJBGDZ          NVARCHAR(200)                        ,  -- 实际办公地址        条件性必填,若关联方是自然人，非必填
