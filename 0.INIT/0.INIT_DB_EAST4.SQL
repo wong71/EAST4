@@ -2,7 +2,7 @@ USE MASTER
 GO
 
 
-----------------创建TA数据库-------------------------------
+----------------创建EAST数据库-------------------------------
 CREATE DATABASE EAST4
 ON
 PRIMARY                                --PRIMARY FILEGROUP 存放系统表、触发器、存储过程
@@ -47,5 +47,52 @@ GO
 --将缺省的FILEGROUP设为EAST4DATA
 ALTER DATABASE EAST4 MODIFY FILEGROUP EAST4DATA DEFAULT
 --ALTER DATABASE EAST4 COLLATE Chinese_PRC_BIN
-go
+GO
+--EAST4 历史库
+CREATE DATABASE EAST4History
+ON
+PRIMARY                                --PRIMARY FILEGROUP 存放系统表、触发器、存储过程
+( NAME = EAST4H_pri,
+
+  FILENAME = 'D:\SQLDATA\EAST4History.mdf',
+
+  SIZE = 100MB,
+
+  FILEGROWTH = 10MB ),
+
+FILEGROUP EAST4HDATA                   --SDATA  FILEGROUP(defaut) 存放交易数据表
+
+( NAME = EAST4H_data,
+
+  FILENAME = 'D:\SQLDATA\EAST4History.ndf',
+
+  SIZE = 100MB,
+
+  FILEGROWTH = 10MB ),
+
+FILEGROUP EAST4HIDX                     --SIDX  FILEGROUP  存放索引数据
+
+( NAME = EAST4H_idx,
+
+  FILENAME = 'D:\SQLDATA\EAST4History_idx.ndf',
+
+  SIZE = 50MB,
+
+  FILEGROWTH = 5MB )
+
+LOG ON
+( NAME = 'EAST4H_log',
+
+  FILENAME = 'D:\SQLDATA\EAST4History_log.ldf',
+
+  SIZE = 100MB,
+
+  FILEGROWTH = 10MB )
+GO
+
+--将缺省的FILEGROUP设为EAST4DATA
+ALTER DATABASE EAST4History MODIFY FILEGROUP EAST4HDATA DEFAULT
+--ALTER DATABASE EAST4 COLLATE Chinese_PRC_BIN
+GO
+
 
