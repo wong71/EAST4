@@ -243,11 +243,13 @@ CREATE TABLE TA01JGXXB
         SJKZRZJLX           NVARCHAR(40)                         ,  --实际控制人证件类型(2004)               选择性填写若实际控制人标识选是，需填写"
         SJKZRZJHM           NVARCHAR(60)                         ,  --实际控制人证件号码                    选择性填写若实际控制人标识选是，需填写" 自然人实际控制人的身份证件号码为隐私，信托机构变形。
         GSZCRQ              NVARCHAR(8)                          ,  --工商注册日期                          必填
-        INSERT_MONTH    INTEGER                                  ,  --首次同步日期（不可变）,insert 时取 TSYSTEM.CURRENT_MONTH
-        SYNC_MONTH      INTEGER                                  ,  --同步月份
-        SYNC_STATUS     INTEGER         NOT NULL    DEFAULT 0    ,  --数据同步情况：0-无变更 1-变化量 2-增加量
-        LOCK_FLAG       INTEGER         NOT NULL    DEFAULT 1    ,  --锁定标志：1-可更新/（读写） 2-锁定（只读）
-        COMPLETE_FLAG   INTEGER         NOT NULL    DEFAULT 1    ,  --数据填报完成标志：1.未完整 2.自动检查完成 3.手动检查完成
+        INSERT_MONTH        INTEGER                              ,  --首次同步日期（不可变）,insert 时取 TSYSTEM.CURRENT_MONTH
+        SYNC_MONTH          INTEGER                              ,  --同步月份
+        SYNC_STATUS         INTEGER         NOT NULL    DEFAULT 0,  --数据同步情况：0-无变更 1-变化量 2-增加量
+        LOCK_FLAG           INTEGER         NOT NULL    DEFAULT 1,  --锁定标志：1-可更新/（读写） 2-锁定（只读）
+        COMPLETE_FLAG       INTEGER         NOT NULL    DEFAULT 1,  --数据填报完成标志：1.未完整 2.自动检查完成 3.手动检查完成
+        CHECK_FLAG          INTEGER         NOT NULL    DEFAULT 1,
+        CHECK_TIME          DATETIME                             ,
         CONSTRAINT PRI_TA01JGXXB  PRIMARY KEY(ID)
 )
 --```
@@ -299,6 +301,8 @@ CREATE TABLE TA02GDXXB
         SYNC_STATUS     INTEGER         NOT NULL    DEFAULT 0    ,  --数据同步情况：0-无变更 1-变化量 2-增加量
         LOCK_FLAG       INTEGER         NOT NULL    DEFAULT 1    ,  --锁定标志：1-可更新/（读写） 2-锁定（只读）
         COMPLETE_FLAG   INTEGER         NOT NULL    DEFAULT 1    ,  --数据填报完成标志：1.未完整 2.自动检查完成 3.手动检查完成
+        CHECK_FLAG      INTEGER         NOT NULL    DEFAULT 1    ,
+        CHECK_TIME      DATETIME                                 ,
         CONSTRAINT PRI_TA02GDXXB  PRIMARY KEY(ID)
 )
 GO
@@ -362,6 +366,8 @@ CREATE TABLE TA03YGXXB
         SYNC_STATUS     INTEGER         NOT NULL    DEFAULT 0    ,  --数据同步情况：0-无变更 1-变化量 2-增加量
         LOCK_FLAG       INTEGER         NOT NULL    DEFAULT 1    ,  --锁定标志：1-可更新/（读写） 2-锁定（只读）
         COMPLETE_FLAG   INTEGER         NOT NULL    DEFAULT 1    ,  --数据填报完成标志：1.未完整 2.自动检查完成 3.手动检查完成
+        CHECK_FLAG      INTEGER         NOT NULL    DEFAULT 1    ,
+        CHECK_TIME      DATETIME                                 ,
         CONSTRAINT PRI_TA03YGXXB  PRIMARY KEY(ID)
 )
 GO
@@ -401,6 +407,8 @@ CREATE TABLE TA04GLFXXB
         SYNC_STATUS     INTEGER         NOT NULL    DEFAULT 0,  --数据同步情况：0-无变更 1-变化量 2-增加量
         LOCK_FLAG       INTEGER         NOT NULL    DEFAULT 1,  --锁定标志：1-可更新/（读写） 2-锁定（只读）
         COMPLETE_FLAG   INTEGER         NOT NULL    DEFAULT 1,  --数据填报完成标志：1.未完整 2.自动检查完成 3.手动检查完成
+        CHECK_FLAG      INTEGER         NOT NULL    DEFAULT 1,
+        CHECK_TIME      DATETIME                             ,
         CONSTRAINT PRI_TA04GLFXXB  PRIMARY KEY(ID)
 )
 GO
