@@ -118,7 +118,8 @@ CREATE TABLE TEREPORT
         CATALOG_TYPE_NAME   NVARCHAR(100)       NOT NULL,               --分类说明
         DATA_SOURCE         NVARCHAR(128)               ,               --数据源系统名称
         TABLE_NAME          NVARCHAR(128)               ,               --数据源表
-        SUMMARY             NVARCHAR(512),                              --数据源说明
+        SUMMARY             NVARCHAR(512)               ,               --数据源说明
+        REPORT_FLAG         INTEGER             NOT NULL DEFAULT 1      --申报标志：1-EAST申报表 2-其他表
         CONSTRAINT PRI_TEREPORT PRIMARY KEY(REPORT_ID)
 )
 
@@ -171,6 +172,30 @@ CREATE TABLE TEREPORTFIELDVERIFY
 CREATE UNIQUE INDEX IDX_TEREPORTFIELDVERIFY ON TEREPORTFIELDVERIFY(REPORT_ID,FIELD_CODE,REF_FIELD_CODE,REF_FIELD_VALUE)
 GO
 --```
+
+--## 1.6. 公司部门信息
+--```sql
+
+IF  EXISTS(SELECT 1 FROM sysobjects WHERE NAME = 'TEDEPART')
+    DROP TABLE TEDEPART
+GO
+CREATE TABLE TEDEPART
+(
+        DEPART_ID           INTEGER         NOT NULL  IDENTITY,     --自动编号做主键
+        PARENT_ID           INTEGER         NOT NULL,               --父级部门ID
+        DEPART_CODE         NVARCHAR(40)    NOT NULL,               --部门代码
+        DEPART_NAME         NVARCHAR(200)   NOT NULL,               --部门名称
+        SHORT_NAME          NVARCHAR(200)   NOT NULL,               --部门简称
+        CLASS               NVARCHAR(100)   NOT NULL,               --部门分类(2012)
+        MANAGER             NVARCHAR(200)   NOT NULL,               --部门经理
+        LEADER              NVARCHAR(200)   NOT NULL,               --分管领导
+        CONSTRAINT PRI_TEDEPART PRIMARY KEY(DEPART_ID)
+)
+CREATE UNIQUE INDEX IDX_TEDEPART ON TEDEPART(DEPART_CODE)
+GO
+
+--
+
 
 
 --# 2.详细表
