@@ -2,6 +2,7 @@ USE EAST4
 GO
 --# 1.
 --## 1.0. 系统表
+--### 1.0.1. 系统信息表
 --```sql
 IF EXISTS(SELECT 1 FROM sysobjects WHERE name = 'TESYSTEMINFO')
     DROP TABLE TESYSTEMINFO
@@ -10,15 +11,35 @@ CREATE TABLE TESYSTEMINFO
 (
         SYSTEM_ID           INTEGER         NOT NULL    IDENTITY            ,   --自动编号做主键
         VERSION             NVARCHAR(64)    NOT NULL                        ,   --字典ID
-        INIT_DATE           DATETIME        NOT NULL    DEFAULT GETDATE()   ,
-        CURRENT_MONTH       INTEGER         NOT NULL                        ,
-        REP_1ST_START_DATE  INTEGER         NOT NULL                        ,
-        REP_1ST_END_DATE    INTEGER         NOT NULL                        ,
-        USER_ID             INTEGER,
+        INIT_DATE           DATETIME        NOT NULL    DEFAULT GETDATE()   ,   --系统部部署时间
+        CURRENT_MONTH       INTEGER         NOT NULL                        ,   --当前月份
+        REP_1ST_START_DATE  INTEGER         NOT NULL                        ,   --首次报送日期区间从
+        REP_1ST_END_DATE    INTEGER         NOT NULL                        ,   --首次报送日期区间到
+        USER_ID             INTEGER                                         ,   --用户ID
+        VERSION_NO          NVARCHAR(40)                                    ,   --版本说明
         CONSTRAINT PRI_TESYSTEMINFO PRIMARY KEY(SYSTEM_ID)
 )
 GO
 --```
+--### 1.0.2. 系统版本信息
+--```sql
+IF EXISTS(SELECT 1 FROM sysobjects WHERE name = 'TEVERSIONDETAIL')
+    DROP TABLE TEVERSIONDETAIL
+GO
+CREATE TABLE TEVERSIONDETAIL
+(
+        SERIAL_NO           INTEGER         NOT NULL    IDENTITY            ,--记录号
+        VERSION_NO          NVARCHAR(40)    NOT NULL                        ,--版本号
+        RELEASE_DATE        INTEGER                                         ,--发布日期
+        DEPLOY_DATE         DATETIME        NOT NULL    DEFAULT GETDATE()   ,--部署日期
+        SUMMARY             NVARCHAR(MAX)                                   ,--版本说明
+        CONSTRAINT PRI_TEVERSIONDETAIL PRIMARY KEY(SERIAL_NO)
+)
+CREATE UNIQUE INDEX IDX_TEVERSIONDETAIL1 ON TEVERSIONDETAIL(VERSION_NO)
+CREATE UNIQUE INDEX IDX_TEVERSIONDETAIL2 ON TEVERSIONDETAIL(RELEASE_DATE)
+GO
+--```
+
 --## 1.1. 字典表
 -- ### 1.1.1 基本字典表
 --```sql

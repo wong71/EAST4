@@ -865,6 +865,7 @@ GO
         UNION ALL SELECT '9002',    '数据元类型'                            ,'selected'             ,   '单选择录入'
         UNION ALL SELECT '9002',    '数据元类型'                            ,'multiselected'        ,   '多选择录入'
         UNION ALL SELECT '9003',    '表申报标志'                            ,'1'                    ,   '申报表'
+        UNION ALL SELECT '9003',    '表申报标志'                            ,'2'                    ,   '申报扩展表'
         UNION ALL SELECT '9003',    '表申报标志'                            ,'9'                    ,   '其他表'
 
 GO
