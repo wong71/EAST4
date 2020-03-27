@@ -29,7 +29,7 @@ CREATE TABLE HA01JGXXB
         INSERT_MONTH        INTEGER                              ,  --首次同步日期（不可变）,insert 时取 TSYSTEM.CURRENT_MONTH
         SYNC_MONTH          INTEGER                              ,  --同步月份 / 变更日期
         SYNC_STATUS         INTEGER         NOT NULL    DEFAULT 0,  --数据同步情况：1-变化量 2-增加量
-
+        CHECK_TIME          DATETIME                             ,
         CONSTRAINT PRI_HA01JGXXB  PRIMARY KEY(SERIAL_NO)
 )
 CREATE UNIQUE INDEX IDX_HA01JGXXB_1 ON HA01JGXXB(SYNC_MONTH,ID)
@@ -81,6 +81,7 @@ CREATE TABLE HA02GDXXB
         INSERT_MONTH    INTEGER                                  ,  --首次同步日期（不可变）,insert 时取 TSYSTEM.CURRENT_MONTH
         SYNC_MONTH      INTEGER                                  ,  --同步月份
         SYNC_STATUS     INTEGER         NOT NULL    DEFAULT 0    ,  --数据同步情况：1-变化量 2-增加量
+        CHECK_TIME      DATETIME                                 ,
         CONSTRAINT PRI_HA02GDXXB  PRIMARY KEY(SERIAL_NO)
 )
 GO
@@ -106,6 +107,7 @@ CREATE TABLE HA02GDZZSYRXXB
         INSERT_MONTH    INTEGER         NOT NULL                 ,  --首次同步日期（不可变）,insert 时取 TSYSTEM.CURRENT_MONTH
         SYNC_MONTH      INTEGER         NOT NULL                 ,  --同步月份
         SYNC_STATUS     INTEGER         NOT NULL    DEFAULT 0    ,  --数据同步情况：0-无变更 1-变化量 2-增加量
+        CHECK_TIME      DATETIME                                 ,
         CONSTRAINT PRI_HA02GDZZSYRXXB  PRIMARY KEY(SERIAL_NO)
 
 )
@@ -143,6 +145,7 @@ CREATE TABLE HA03YGXXB
         DS_RECORD_NO    NVARCHAR(32)                             ,  --数据源.表.主键值
         SYNC_MONTH      INTEGER                                  ,  --同步月份
         SYNC_STATUS     INTEGER         NOT NULL    DEFAULT 0    ,  --数据同步情况：1-变化量 2-增加量
+        CHECK_TIME      DATETIME                                 ,
         CONSTRAINT PRI_HA03YGXXB  PRIMARY KEY(SERIAL_NO)
 )
 GO
@@ -180,6 +183,7 @@ CREATE TABLE HA04GLFXXB
         INSERT_MONTH    INTEGER                              ,  --首次同步日期（不可变）,insert 时取 TSYSTEM.CURRENT_MONTH
         SYNC_MONTH      INTEGER                              ,  --同步月份
         SYNC_STATUS     INTEGER         NOT NULL    DEFAULT 0,  --数据同步情况：1-变化量 2-增加量
+        CHECK_TIME      DATETIME                             ,
         CONSTRAINT PRI_HA04GLFXXB  PRIMARY KEY(SERIAL_NO)
 )
 GO
