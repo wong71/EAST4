@@ -267,7 +267,7 @@ USE EAST4
         UNION ALL SELECT 3, 'YGZJLX'    ,N'员工证件类型'    ,'C'    ,30     ,0  ,'selected'         ,'2010'  ,1     ,''           ,'必填'                                                 ,N'填写枚举值。建议以身份证为主要选择项'
         UNION ALL SELECT 3, 'YGJZHM'    ,N'员工证件号码'    ,'C'    ,60     ,0  ,'input'            ,''      ,1     ,''           ,'必填'                                                 ,N''
         UNION ALL SELECT 3, 'ZZMM'      ,N'政治面貌'        ,'C'    ,20     ,0  ,'input'            ,'2011'  ,1     ,''           ,'必填'                                                  ,N'填写枚举值'
-        UNION ALL SELECT 3, 'LXDH'      ,N'联系电话'        ,'C'    ,30     ,0  ,'input'            ,''      ,1     ,''           ,'非必填'                                               ,N'填写联系电话号码,信托公司自定义：区号-座机电话或手机,电话号码为隐私，暂不取'
+        UNION ALL SELECT 3, 'LXDH'      ,N'联系电话'        ,'C'    ,30     ,0  ,'input'            ,''      ,0     ,''           ,'非必填'                                               ,N'填写联系电话号码,信托公司自定义：区号-座机电话或手机,电话号码为隐私，暂不取'
         UNION ALL SELECT 3, 'SSBM'      ,N'所属部门'        ,'C'    ,200    ,0  ,'input'            ,''      ,1     ,''           ,'必填'                                                 ,N''
         UNION ALL SELECT 3, 'SSBMFL'    ,N'所属部门分类'    ,'C'    ,100     ,0  ,'multiselected'   ,'2012'  ,1     ,''           ,'必填'                                             ,N'信托公司自定义：中文描述'
         UNION ALL SELECT 3, 'YGZW'      ,N'员工职务'        ,'C'    ,200    ,0  ,'input'            ,''      ,1     ,''           ,'必填'                                                 ,N'填写职务名称	信托公司自定义：中文描述'
